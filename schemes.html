@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes - Sarkari Sahayak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2874a6;
+            --accent-color: #3498db;
+            --light-color: #ebf5fb;
+            --dark-color: #154360;
+            --text-color: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --gradient: linear-gradient(135deg, #1a5276 0%, #3498db 100%);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #1abc9c;
+            --light-color: #2c3e50;
+            --dark-color: #34495e;
+            --text-color: #ecf0f1;
+            --text-light: #bdc3c7;
+            --bg-color: #1a252f;
+            --card-bg: #2c3e50;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo h2 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            min-width: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-toggle, .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .lang-toggle:hover, .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Schemes Section */
+        .schemes-section {
+            padding: 120px 0 80px;
+            background: var(--light-color);
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+        }
+
+        .schemes-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .scheme-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .scheme-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s;
+            border-left: 5px solid var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .scheme-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+        }
+
+        .scheme-header h3 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .scheme-toggle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+
+        .scheme-details {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--light-color);
+        }
+
+        .scheme-details.active {
+            padding: 2rem;
+            max-height: 2000px;
+        }
+
+        .scheme-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-section {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-section h4 i {
+            color: var(--accent-color);
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-section li:last-child {
+            border-bottom: none;
+        }
+
+        .info-section li i {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        .scheme-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .scheme-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .scheme-header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .scheme-details.active {
+                padding: 1.5rem;
+            }
+            
+            .scheme-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: transparent;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
+                <h2>सरकारी सहायक</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link" data-en="Home" data-hi="होम">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle active" data-en="Schemes" data-hi="योजनाएं">
+                        Schemes <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="#employment-linked" data-en="Employment Linked Incentive" data-hi="रोजगार लिंक्ड प्रोत्साहन">Employment Linked Incentive</a></li>
+                        <li class="dropdown-item"><a href="#pm-internship" data-en="PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना">PM Internship Scheme</a></li>
+                        <li class="dropdown-item"><a href="#surya-ghar" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</a></li>
+                        <li class="dropdown-item"><a href="#aatmanirbharta-pulses" data-en="Aatmanirbharta in Pulses" data-hi="दलों में आत्मनिर्भरता">Aatmanirbharta in Pulses</a></li>
+                        <li class="dropdown-item"><a href="#bhasha-pustak" data-en="Bharatiya Bhasha Pustak" data-hi="भारतीय भाषा पुस्तक">Bharatiya Bhasha Pustak</a></li>
+                        <li class="dropdown-item"><a href="#online-workers" data-en="Social Security for Online Workers" data-hi="ऑनलाइन कर्मियों के लिए सामाजिक सुरक्षा">Social Security for Online Workers</a></li>
+                        <li class="dropdown-item"><a href="#vishwakarma" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">PM Vishwakarma Yojana</a></li>
+                        <li class="dropdown-item"><a href="#pm-kisan" data-en="PM-KISAN Enhanced" data-hi="पीएम-किसान एन्हांस्ड">PM-KISAN Enhanced</a></li>
+                        <li class="dropdown-item"><a href="#janjatiya-unnat" data-en="Janjatiya Unnat Gram" data-hi="जनजातीय उन्नत ग्राम">Janjatiya Unnat Gram</a></li>
+                        <li class="dropdown-item"><a href="#high-yield-seeds" data-en="High Yielding Seeds Mission" data-hi="उच्च उपज बीज मिशन">High Yielding Seeds Mission</a></li>
+                        <li class="dropdown-item"><a href="#dhan-dhaanya" data-en="Dhan-Dhaanya Krishi" data-hi="धन-धान्य कृषि">Dhan-Dhaanya Krishi</a></li>
+                        <li class="dropdown-item"><a href="#electric-mobility" data-en="Electric Mobility Promotion" data-hi="इलेक्ट्रिक मोबिलिटी प्रमोशन">Electric Mobility Promotion</a></li>
+                        <li class="dropdown-item"><a href="#subhadra" data-en="Subhadra Yojana" data-hi="सुभद्रा योजना">Subhadra Yojana</a></li>
+                        <li class="dropdown-item"><a href="#green-india" data-en="Green India Digital Mission" data-hi="ग्रीन इंडिया डिजिटल मिशन">Green India Digital Mission</a></li>
+                        <li class="dropdown-item"><a href="#bharat-skill" data-en="Bharat Skill Connect" data-hi="भारत स्किल कनेक्ट">Bharat Skill Connect</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link" data-en="About" data-hi="हमारे बारे में">About</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <span class="lang-text" data-en="हिंदी" data-hi="English">हिंदी</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Schemes Section -->
+    <section class="schemes-section">
+        <div class="container">
+            <h1 class="page-title" data-en="Government Schemes" data-hi="सरकारी योजनाएं">
+                Government Schemes
+            </h1>
+            <p class="page-subtitle" data-en="Explore 15+ government schemes and their benefits. Click on any scheme to view detailed information." 
+               data-hi="15+ सरकारी योजनाओं और उनके लाभों का पता लगाएं। विस्तृत जानकारी देखने के लिए किसी भी योजना पर क्लिक करें।">
+                Explore 15+ government schemes and their benefits. Click on any scheme to view detailed information.
+            </p>
+
+            <div class="schemes-grid">
+                
+                <!-- Employment Linked Incentive Scheme -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="employment-linked" data-en="Employment Linked Incentive (ELI) Scheme" data-hi="रोजगार लिंक्ड प्रोत्साहन (ईएलआई) योजना">
+                        Employment Linked Incentive (ELI) Scheme
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('eli-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Boost Employment with Financial Incentives" data-hi="वित्तीय प्रोत्साहन के साथ रोजगार बढ़ाएं">
+                                Boost Employment with Financial Incentives
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="eli-details">
+                            <p data-en="Provides financial incentives to companies for generating new employment opportunities" 
+                               data-hi="नए रोजगार के अवसर पैदा करने के लिए कंपनियों को वित्तीय प्रोत्साहन प्रदान करती है">
+                               Provides financial incentives to companies for generating new employment opportunities
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-briefcase"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="₹5,000 per employee per month" data-hi="₹5,000 प्रति कर्मचारी प्रति माह">₹5,000 per employee per month</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Direct subsidy to employers" data-hi="नियोक्ताओं को सीधी सब्सिडी">Direct subsidy to employers</span></li>
+                                        <li><i class="fas fa-user-plus"></i> <span data-en="For new job creation" data-hi="नई नौकरी सृजन के लिए">For new job creation</span></li>
+                                        <li><i class="fas fa-industry"></i> <span data-en="MSME sector focus" data-hi="एमएसएमई क्षेत्र फोकस">MSME sector focus</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Skilled workforce development" data-hi="कुशल कार्यबल विकास">Skilled workforce development</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Economic growth boost" data-hi="आर्थिक विकास बढ़ावा">Economic growth boost</span></li>
+                                        <li><i class="fas fa-users"></i> <span data-en="Youth employment generation" data-hi="युवा रोजगार सृजन">Youth employment generation</span></li>
+                                        <li><i class="fas fa-award"></i> <span data-en="Performance-based incentives" data-hi="प्रदर्शन-आधारित प्रोत्साहन">Performance-based incentives</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Registered companies in India" data-hi="भारत में पंजीकृत कंपनियां">Registered companies in India</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 10 new employees" data-hi="न्यूनतम 10 नए कर्मचारी">Minimum 10 new employees</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="MSME and manufacturing units" data-hi="एमएसएमई और विनिर्माण इकाइयां">MSME and manufacturing units</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 1 year employment" data-hi="न्यूनतम 1 वर्ष रोजगार">Minimum 1 year employment</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="EPFO registered employees" data-hi="ईपीएफओ पंजीकृत कर्मचारी">EPFO registered employees</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="New establishments preferred" data-hi="नई स्थापनाएं प्राथमिकता">New establishments preferred</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Government employees excluded" data-hi="सरकारी कर्मचारी शामिल नहीं">Government employees excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Existing employees not eligible" data-hi="मौजूदा कर्मचारी पात्र नहीं">Existing employees not eligible</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Company registration certificate" data-hi="कंपनी पंजीकरण प्रमाण पत्र">Company registration certificate</span></li>
+                                        <li><i class="fas fa-users"></i> <span data-en="Employee appointment letters" data-hi="कर्मचारी नियुक्ति पत्र">Employee appointment letters</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="EPFO registration details" data-hi="ईपीएफओ पंजीकरण विवरण">EPFO registration details</span></li>
+                                        <li><i class="fas fa-file-invoice"></i> <span data-en="Salary payment proofs" data-hi="वेतन भुगतान प्रमाण">Salary payment proofs</span></li>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Employee Aadhaar cards" data-hi="कर्मचारी आधार कार्ड">Employee Aadhaar cards</span></li>
+                                        <li><i class="fas fa-balance-scale"></i> <span data-en="GST registration certificate" data-hi="जीएसटी पंजीकरण प्रमाण पत्र">GST registration certificate</span></li>
+                                        <li><i class="fas fa-bank"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Authorized signatory details" data-hi="अधिकृत हस्ताक्षरकर्ता विवरण">Authorized signatory details</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://labour.gov.in/eli-scheme" class="scheme-link" target="_blank" data-en="Apply for ELI Scheme" data-hi="ईएलआई योजना के लिए आवेदन करें">
+                                <i class="fas fa-briefcase"></i>
+                                Apply for ELI Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prime Minister Internship Scheme -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="pm-internship" data-en="Prime Minister Internship Scheme (PMIS)" data-hi="प्रधानमंत्री इंटर्नशिप योजना (पीएमआईएस)">
+                        Prime Minister Internship Scheme (PMIS)
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('pmis-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Skill Development through Paid Internships" data-hi="पेड इंटर्नशिप के माध्यम से कौशल विकास">
+                                Skill Development through Paid Internships
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="pmis-details">
+                            <p data-en="Provides paid internship opportunities to fresh graduates for skill enhancement and industry exposure" 
+                               data-hi="ताजा स्नातकों को कौशल वृद्धि और उद्योग एक्सपोजर के लिए भुगतान इंटर्नशिप अवसर प्रदान करती है">
+                               Provides paid internship opportunities to fresh graduates for skill enhancement and industry exposure
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-graduate"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="₹15,000 monthly stipend" data-hi="₹15,000 मासिक स्टाइपेंड">₹15,000 monthly stipend</span></li>
+                                        <li><i class="fas fa-building"></i> <span data-en="Industry exposure" data-hi="उद्योग एक्सपोजर">Industry exposure</span></li>
+                                        <li><i class="fas fa-certificate"></i> <span data-en="Certificate of completion" data-hi="पूरा होने का प्रमाण पत्र">Certificate of completion</span></li>
+                                        <li><i class="fas fa-network-wired"></i> <span data-en="Professional networking" data-hi="पेशेवर नेटवर्किंग">Professional networking</span></li>
+                                        <li><i class="fas fa-briefcase"></i> <span data-en="Job placement assistance" data-hi="नौकरी प्लेसमेंट सहायता">Job placement assistance</span></li>
+                                        <li><i class="fas fa-laptop-code"></i> <span data-en="Skill development training" data-hi="कौशल विकास प्रशिक्षण">Skill development training</span></li>
+                                        <li><i class="fas fa-medal"></i> <span data-en="Performance bonuses" data-hi="प्रदर्शन बोनस">Performance bonuses</span></li>
+                                        <li><i class="fas fa-heartbeat"></i> <span data-en="Health insurance coverage" data-hi="स्वास्थ्य बीमा कवरेज">Health insurance coverage</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian citizens aged 21-28" data-hi="21-28 वर्ष के भारतीय नागरिक">Indian citizens aged 21-28</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Fresh graduates (within 2 years)" data-hi="ताजा स्नातक (2 वर्ष के भीतर)">Fresh graduates (within 2 years)</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 60% in graduation" data-hi="स्नातक में न्यूनतम 60%">Minimum 60% in graduation</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Engineering/management graduates" data-hi="इंजीनियरिंग/प्रबंधन स्नातक">Engineering/management graduates</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="No prior work experience" data-hi="कोई पूर्व कार्य अनुभव नहीं">No prior work experience</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="All streams eligible" data-hi="सभी स्ट्रीम पात्र">All streams eligible</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Currently employed not eligible" data-hi="वर्तमान में कार्यरत पात्र नहीं">Currently employed not eligible</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Postgraduates not eligible" data-hi="पोस्टग्रेजुएट पात्र नहीं">Postgraduates not eligible</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Graduation degree certificate" data-hi="स्नातक डिग्री प्रमाण पत्र">Graduation degree certificate</span></li>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Passport size photographs" data-hi="पासपोर्ट साइज फोटो">Passport size photographs</span></li>
+                                        <li><i class="fas fa-file-invoice"></i> <span data-en="Mark sheets (all semesters)" data-hi="मार्क शीट (सभी सेमेस्टर)">Mark sheets (all semesters)</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-birthday-cake"></i> <span data-en="Date of birth certificate" data-hi="जन्म तिथि प्रमाण पत्र">Date of birth certificate</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number and email" data-hi="मोबाइल नंबर और ईमेल">Mobile number and email</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://internship.gov.in" class="scheme-link" target="_blank" data-en="Apply for PM Internship" data-hi="पीएम इंटर्नशिप के लिए आवेदन करें">
+                                <i class="fas fa-user-graduate"></i>
+                                Apply for PM Internship
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pradhan Mantri Surya Ghar Muft Bijli Yojana -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="surya-ghar" data-en="Pradhan Mantri Surya Ghar Muft Bijli Yojana" data-hi="प्रधानमंत्री सूर्य घर मुफ्त बिजली योजना">
+                        Pradhan Mantri Surya Ghar Muft Bijli Yojana
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('surya-ghar-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Free Electricity through Solar Power" data-hi="सौर ऊर्जा के माध्यम से मुफ्त बिजली">
+                                Free Electricity through Solar Power
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="surya-ghar-details">
+                            <p data-en="Provides subsidy for installation of solar power systems in residential homes for free electricity" 
+                               data-hi="मुफ्त बिजली के लिए आवासीय घरों में सौर ऊर्जा प्रणाली स्थापित करने के लिए सब्सिडी प्रदान करती है">
+                               Provides subsidy for installation of solar power systems in residential homes for free electricity
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-solar-panel"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="Up to 60% subsidy on installation" data-hi="स्थापना पर 60% तक सब्सिडी">Up to 60% subsidy on installation</span></li>
+                                        <li><i class="fas fa-bolt"></i> <span data-en="Free electricity generation" data-hi="मुफ्त बिजली उत्पादन">Free electricity generation</span></li>
+                                        <li><i class="fas fa-sun"></i> <span data-en="Solar panel installation" data-hi="सोलर पैनल इंस्टालेशन">Solar panel installation</span></li>
+                                        <li><i class="fas fa-recycle"></i> <span data-en="Green energy promotion" data-hi="ग्रीन एनर्जी प्रमोशन">Green energy promotion</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Reduced electricity bills" data-hi="कम बिजली बिल">Reduced electricity bills</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Income from excess power" data-hi="अतिरिक्त बिजली से आय">Income from excess power</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Grid connectivity" data-hi="ग्रिड कनेक्टिविटी">Grid connectivity</span></li>
+                                        <li><i class="fas fa-tools"></i> <span data-en="Maintenance support" data-hi="रखरखाव समर्थन">Maintenance support</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian residential consumers" data-hi="भारतीय आवासीय उपभोक्ता">Indian residential consumers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Own house with roof rights" data-hi="छत अधिकारों के साथ अपना घर">Own house with roof rights</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Valid electricity connection" data-hi="वैध बिजली कनेक्शन">Valid electricity connection</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Aadhaar linked bank account" data-hi="आधार लिंक्ड बैंक खाता">Aadhaar linked bank account</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Monthly consumption 100-300 units" data-hi="मासिक खपत 100-300 यूनिट">Monthly consumption 100-300 units</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="All states and UTs covered" data-hi="सभी राज्य और केंद्र शासित प्रदेश शामिल">All states and UTs covered</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Commercial establishments excluded" data-hi="वाणिज्यिक प्रतिष्ठान शामिल नहीं">Commercial establishments excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Government housing excluded" data-hi="सरकारी आवास शामिल नहीं">Government housing excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="House ownership proof" data-hi="घर स्वामित्व प्रमाण">House ownership proof</span></li>
+                                        <li><i class="fas fa-bolt"></i> <span data-en="Electricity bill copy" data-hi="बिजली बिल की कॉपी">Electricity bill copy</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Roof photographs" data-hi="छत की तस्वीरें">Roof photographs</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Property documents" data-hi="संपत्ति दस्तावेज">Property documents</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://pmsuryaghar.gov.in" class="scheme-link" target="_blank" data-en="Apply for Solar Scheme" data-hi="सोलर योजना के लिए आवेदन करें">
+                                <i class="fas fa-solar-panel"></i>
+                                Apply for Solar Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission for Aatmanirbharta in Pulses -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="aatmanirbharta-pulses" data-en="Mission for Aatmanirbharta in Pulses" data-hi="दलों में आत्मनिर्भरता मिशन">
+                        Mission for Aatmanirbharta in Pulses
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('pulses-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Self-Sufficiency in Pulse Production" data-hi="दल उत्पादन में आत्मनिर्भरता">
+                                Self-Sufficiency in Pulse Production
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="pulses-details">
+                            <p data-en="Aims to make India self-reliant in pulse production through technological interventions and farmer support" 
+                               data-hi="तकनीकी हस्तक्षेप और किसान समर्थन के माध्यम से भारत को दल उत्पादन में आत्मनिर्भर बनाना">
+                               Aims to make India self-reliant in pulse production through technological interventions and farmer support
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-seedling"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-tractor"></i> <span data-en="Modern farming equipment" data-hi="आधुनिक खेती उपकरण">Modern farming equipment</span></li>
+                                        <li><i class="fas fa-dna"></i> <span data-en="High-yield seed varieties" data-hi="उच्च उपज बीज किस्में">High-yield seed varieties</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Financial assistance to farmers" data-hi="किसानों को वित्तीय सहायता">Financial assistance to farmers</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Training programs" data-hi="प्रशिक्षण कार्यक्रम">Training programs</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Irrigation facilities" data-hi="सिंचाई सुविधाएं">Irrigation facilities</span></li>
+                                        <li><i class="fas fa-shipping-fast"></i> <span data-en="Storage infrastructure" data-hi="भंडारण बुनियादी ढांचा">Storage infrastructure</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Market linkage support" data-hi="बाजार संपर्क समर्थन">Market linkage support</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Crop insurance" data-hi="फसल बीमा">Crop insurance</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Pulse growing farmers" data-hi="दल उगाने वाले किसान">Pulse growing farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 1 acre land" data-hi="न्यूनतम 1 एकड़ जमीन">Minimum 1 acre land</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Registered with agriculture department" data-hi="कृषि विभाग के साथ पंजीकृत">Registered with agriculture department</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Small and marginal farmers" data-hi="छोटे और सीमांत किसान">Small and marginal farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Women farmers encouraged" data-hi="महिला किसानों को प्रोत्साहित">Women farmers encouraged</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="SC/ST farmers priority" data-hi="एससी/एसटी किसान प्राथमिकता">SC/ST farmers priority</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Large landholders limited" data-hi="बड़े भूमिधारक सीमित">Large landholders limited</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Non-agricultural land excluded" data-hi="गैर-कृषि भूमि शामिल नहीं">Non-agricultural land excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Land ownership documents" data-hi="भूमि स्वामित्व दस्तावेज">Land ownership documents</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Crop cultivation proof" data-hi="फसल खेती प्रमाण">Crop cultivation proof</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Kisan credit card" data-hi="किसान क्रेडिट कार्ड">Kisan credit card</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Farm photographs" data-hi="फार्म फोटोग्राफ">Farm photographs</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://agriculture.gov.in/pulses-mission" class="scheme-link" target="_blank" data-en="Apply for Pulses Mission" data-hi="दल मिशन के लिए आवेदन करें">
+                                <i class="fas fa-seedling"></i>
+                                Apply for Pulses Mission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bharatiya Bhasha Pustak Scheme -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="bhasha-pustak" data-en="Bharatiya Bhasha Pustak Scheme" data-hi="भारतीय भाषा पुस्तक योजना">
+                        Bharatiya Bhasha Pustak Scheme
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('bhasha-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Promotion of Indian Language Books" data-hi="भारतीय भाषा पुस्तकों का प्रचार">
+                                Promotion of Indian Language Books
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="bhasha-details">
+                            <p data-en="Supports publication and distribution of books in Indian languages to preserve linguistic diversity" 
+                               data-hi="भाषाई विविधता को संरक्षित करने के लिए भारतीय भाषाओं में पुस्तकों के प्रकाशन और वितरण का समर्थन करती है">
+                               Supports publication and distribution of books in Indian languages to preserve linguistic diversity
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-book"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="Publication grants for authors" data-hi="लेखकों के लिए प्रकाशन अनुदान">Publication grants for authors</span></li>
+                                        <li><i class="fas fa-language"></i> <span data-en="Translation support" data-hi="अनुवाद समर्थन">Translation support</span></li>
+                                        <li><i class="fas fa-print"></i> <span data-en="Printing cost assistance" data-hi="मुद्रण लागत सहायता">Printing cost assistance</span></li>
+                                        <li><i class="fas fa-truck"></i> <span data-en="Distribution network" data-hi="वितरण नेटवर्क">Distribution network</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Educational material development" data-hi="शैक्षिक सामग्री विकास">Educational material development</span></li>
+                                        <li><i class="fas fa-library"></i> <span data-en="Library support" data-hi="पुस्तकालय समर्थन">Library support</span></li>
+                                        <li><i class="fas fa-award"></i> <span data-en="Awards for writers" data-hi="लेखकों के लिए पुरस्कार">Awards for writers</span></li>
+                                        <li><i class="fas fa-globe"></i> <span data-en="Digital platform access" data-hi="डिजिटल प्लेटफॉर्म एक्सेस">Digital platform access</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian authors and publishers" data-hi="भारतीय लेखक और प्रकाशक">Indian authors and publishers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Books in Indian languages" data-hi="भारतीय भाषाओं में पुस्तकें">Books in Indian languages</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Registered publishing houses" data-hi="पंजीकृत प्रकाशन गृह">Registered publishing houses</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Educational institutions" data-hi="शैक्षणिक संस्थान">Educational institutions</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Non-profit organizations" data-hi="गैर-लाभकारी संगठन">Non-profit organizations</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="First-time authors encouraged" data-hi="पहली बार लेखकों को प्रोत्साहित">First-time authors encouraged</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Foreign publications excluded" data-hi="विदेशी प्रकाशन शामिल नहीं">Foreign publications excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="English language books limited" data-hi="अंग्रेजी भाषा की पुस्तकें सीमित">English language books limited</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-file-text"></i> <span data-en="Book manuscript" data-hi="पुस्तक पांडुलिपि">Book manuscript</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Publication proposal" data-hi="प्रकाशन प्रस्ताव">Publication proposal</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Educational qualifications" data-hi="शैक्षिक योग्यता">Educational qualifications</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://www.education.gov.in/bhasha-pustak" class="scheme-link" target="_blank" data-en="Apply for Book Scheme" data-hi="पुस्तक योजना के लिए आवेदन करें">
+                                <i class="fas fa-book"></i>
+                                Apply for Book Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Security Scheme for Online Platform Workers -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="online-workers" data-en="Social Security Scheme for Online Platform Workers" data-hi="ऑनलाइन प्लेटफॉर्म कर्मियों के लिए सामाजिक सुरक्षा योजना">
+                        Social Security Scheme for Online Platform Workers
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('online-workers-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Social Security for Gig Economy Workers" data-hi="गिग इकोनॉमी कर्मियों के लिए सामाजिक सुरक्षा">
+                                Social Security for Gig Economy Workers
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="online-workers-details">
+                            <p data-en="Provides social security benefits including insurance, pension, and healthcare to online platform workers" 
+                               data-hi="ऑनलाइन प्लेटफॉर्म कर्मियों को बीमा, पेंशन और स्वास्थ्य देखभाल सहित सामाजिक सुरक्षा लाभ प्रदान करती है">
+                               Provides social security benefits including insurance, pension, and healthcare to online platform workers
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-shield-alt"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-heartbeat"></i> <span data-en="Health insurance coverage" data-hi="स्वास्थ्य बीमा कवरेज">Health insurance coverage</span></li>
+                                        <li><i class="fas fa-piggy-bank"></i> <span data-en="Pension benefits" data-hi="पेंशन लाभ">Pension benefits</span></li>
+                                        <li><i class="fas fa-ambulance"></i> <span data-en="Accident insurance" data-hi="दुर्घटना बीमा">Accident insurance</span></li>
+                                        <li><i class="fas fa-baby"></i> <span data-en="Maternity benefits" data-hi="मातृत्व लाभ">Maternity benefits</span></li>
+                                        <li><i class="fas fa-stethoscope"></i> <span data-en="Medical care support" data-hi="चिकित्सा देखभाल समर्थन">Medical care support</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Disability benefits" data-hi="विकलांगता लाभ">Disability benefits</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Housing assistance" data-hi="आवास सहायता">Housing assistance</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Education support for children" data-hi="बच्चों के लिए शिक्षा समर्थन">Education support for children</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Online platform workers" data-hi="ऑनलाइन प्लेटफॉर्म कर्मी">Online platform workers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 18 years age" data-hi="न्यूनतम 18 वर्ष की आयु">Minimum 18 years age</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Regular platform engagement" data-hi="नियमित प्लेटफॉर्म संलग्नता">Regular platform engagement</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian citizenship" data-hi="भारतीय नागरिकता">Indian citizenship</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Aadhaar verification" data-hi="आधार सत्यापन">Aadhaar verification</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Bank account mandatory" data-hi="बैंक खाता अनिवार्य">Bank account mandatory</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Regular employees excluded" data-hi="नियमित कर्मचारी शामिल नहीं">Regular employees excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Government employees excluded" data-hi="सरकारी कर्मचारी शामिल नहीं">Government employees excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Platform work proof" data-hi="प्लेटफॉर्म कार्य प्रमाण">Platform work proof</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Passport size photos" data-hi="पासपोर्ट साइज फोटो">Passport size photos</span></li>
+                                        <li><i class="fas fa-birthday-cake"></i> <span data-en="Age proof" data-hi="उम्र प्रमाण">Age proof</span></li>
+                                        <li><i class="fas fa-file-invoice"></i> <span data-en="Income certificate" data-hi="आय प्रमाण पत्र">Income certificate</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://labour.gov.in/social-security-gig-workers" class="scheme-link" target="_blank" data-en="Register for Social Security" data-hi="सामाजिक सुरक्षा के लिए पंजीकरण करें">
+                                <i class="fas fa-shield-alt"></i>
+                                Register for Social Security
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PM Vishwakarma Yojana -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="vishwakarma" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">
+                        PM Vishwakarma Yojana
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('vishwakarma-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Support for Traditional Artisans and Craftsmen" data-hi="पारंपरिक कारीगरों और शिल्पकारों के लिए समर्थन">
+                                Support for Traditional Artisans and Craftsmen
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="vishwakarma-details">
+                            <p data-en="Comprehensive support scheme for traditional artisans and craftsmen to preserve and promote Indian handicrafts" 
+                               data-hi="भारतीय हस्तशिल्प को संरक्षित और बढ़ावा देने के लिए पारंपरिक कारीगरों और शिल्पकारों के लिए व्यापक समर्थन योजना">
+                               Comprehensive support scheme for traditional artisans and craftsmen to preserve and promote Indian handicrafts
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-hammer"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="Financial assistance up to ₹2 lakh" data-hi="₹2 लाख तक वित्तीय सहायता">Financial assistance up to ₹2 lakh</span></li>
+                                        <li><i class="fas fa-tools"></i> <span data-en="Modern tool kits" data-hi="आधुनिक टूल किट">Modern tool kits</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Skill training programs" data-hi="कौशल प्रशिक्षण कार्यक्रम">Skill training programs</span></li>
+                                        <li><i class="fas fa-store"></i> <span data-en="Market linkage support" data-hi="बाजार संपर्क समर्थन">Market linkage support</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Social security benefits" data-hi="सामाजिक सुरक्षा लाभ">Social security benefits</span></li>
+                                        <li><i class="fas fa-medal"></i> <span data-en="Recognition and awards" data-hi="मान्यता और पुरस्कार">Recognition and awards</span></li>
+                                        <li><i class="fas fa-globe"></i> <span data-en="Digital marketing support" data-hi="डिजिटल मार्केटिंग समर्थन">Digital marketing support</span></li>
+                                        <li><i class="fas fa-hands-helping"></i> <span data-en="Entrepreneurship development" data-hi="उद्यमिता विकास">Entrepreneurship development</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Traditional artisans and craftsmen" data-hi="पारंपरिक कारीगर और शिल्पकार">Traditional artisans and craftsmen</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 18 years age" data-hi="न्यूनतम 18 वर्ष की आयु">Minimum 18 years age</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian citizenship" data-hi="भारतीय नागरिकता">Indian citizenship</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Traditional craft practice" data-hi="पारंपरिक शिल्प अभ्यास">Traditional craft practice</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Family tradition encouraged" data-hi="पारिवारिक परंपरा प्रोत्साहित">Family tradition encouraged</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Rural artisans priority" data-hi="ग्रामीण कारीगर प्राथमिकता">Rural artisans priority</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Factory workers excluded" data-hi="फैक्ट्री कर्मचारी शामिल नहीं">Factory workers excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Urban professionals excluded" data-hi="शहरी पेशेवर शामिल नहीं">Urban professionals excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-hammer"></i> <span data-en="Craft certification" data-hi="शिल्प प्रमाणन">Craft certification</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Work photographs" data-hi="कार्य फोटोग्राफ">Work photographs</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Business registration" data-hi="व्यवसाय पंजीकरण">Business registration</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://pmvishwakarma.gov.in" class="scheme-link" target="_blank" data-en="Apply for Vishwakarma Scheme" data-hi="विश्वकर्मा योजना के लिए आवेदन करें">
+                                <i class="fas fa-hammer"></i>
+                                Apply for Vishwakarma Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PM-KISAN Enhanced -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="pm-kisan" data-en="PM-KISAN Samman Nidhi (Enhanced)" data-hi="पीएम-किसान सम्मान निधि (एन्हांस्ड)">
+                        PM-KISAN Samman Nidhi (Enhanced)
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('pm-kisan-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Enhanced Financial Support for Farmers" data-hi="किसानों के लिए एन्हांस्ड वित्तीय समर्थन">
+                                Enhanced Financial Support for Farmers
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="pm-kisan-details">
+                            <p data-en="Enhanced version of PM-KISAN providing increased financial assistance and additional benefits to farmers" 
+                               data-hi="पीएम-किसान का एन्हांस्ड संस्करण जो किसानों को बढ़ी हुई वित्तीय सहायता और अतिरिक्त लाभ प्रदान करता है">
+                               Enhanced version of PM-KISAN providing increased financial assistance and additional benefits to farmers
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-tractor"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="₹8,000 per year (enhanced from ₹6,000)" data-hi="₹8,000 प्रति वर्ष (₹6,000 से बढ़ाया गया)">₹8,000 per year (enhanced from ₹6,000)</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Free seeds and fertilizers" data-hi="मुफ्त बीज और उर्वरक">Free seeds and fertilizers</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Irrigation support" data-hi="सिंचाई समर्थन">Irrigation support</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Enhanced crop insurance" data-hi="एन्हांस्ड फसल बीमा">Enhanced crop insurance</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Agricultural training" data-hi="कृषि प्रशिक्षण">Agricultural training</span></li>
+                                        <li><i class="fas fa-shopping-cart"></i> <span data-en="Market access support" data-hi="बाजार पहुंच समर्थन">Market access support</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Digital payment system" data-hi="डिजिटल भुगतान प्रणाली">Digital payment system</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Additional state benefits" data-hi="अतिरिक्त राज्य लाभ">Additional state benefits</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="All landholding farmers" data-hi="सभी भूमिधारक किसान">All landholding farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Small and marginal farmers" data-hi="छोटे और सीमांत किसान">Small and marginal farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Women farmers priority" data-hi="महिला किसान प्राथमिकता">Women farmers priority</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="SC/ST farmers focus" data-hi="एससी/एसटी किसान फोकस">SC/ST farmers focus</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="All states covered" data-hi="सभी राज्य शामिल">All states covered</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Aadhaar linked registration" data-hi="आधार लिंक्ड पंजीकरण">Aadhaar linked registration</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Institutional landholders excluded" data-hi="संस्थागत भूमिधारक शामिल नहीं">Institutional landholders excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Income tax payers excluded" data-hi="आयकर दाता शामिल नहीं">Income tax payers excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Land ownership records" data-hi="भूमि स्वामित्व रिकॉर्ड">Land ownership records</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Passport size photo" data-hi="पासपोर्ट साइज फोटो">Passport size photo</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Income certificate" data-hi="आय प्रमाण पत्र">Income certificate</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://pmkisan.gov.in" class="scheme-link" target="_blank" data-en="Apply for PM-KISAN Enhanced" data-hi="पीएम-किसान एन्हांस्ड के लिए आवेदन करें">
+                                <i class="fas fa-tractor"></i>
+                                Apply for PM-KISAN Enhanced
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pradhan Mantri Janjatiya Unnat Gram Abhiyan -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="janjatiya-unnat" data-en="Pradhan Mantri Janjatiya Unnat Gram Abhiyan" data-hi="प्रधानमंत्री जनजातीय उन्नत ग्राम अभियान">
+                        Pradhan Mantri Janjatiya Unnat Gram Abhiyan
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('janjatiya-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Development of Tribal Villages" data-hi="आदिवासी गांवों का विकास">
+                                Development of Tribal Villages
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="janjatiya-details">
+                            <p data-en="Comprehensive development program for tribal villages focusing on infrastructure, education, and livelihood" 
+                               data-hi="आदिवासी गांवों के लिए बुनियादी ढांचे, शिक्षा और आजीविका पर केंद्रित व्यापक विकास कार्यक्रम">
+                               Comprehensive development program for tribal villages focusing on infrastructure, education, and livelihood
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-home"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-road"></i> <span data-en="Road connectivity" data-hi="सड़क कनेक्टिविटी">Road connectivity</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Drinking water supply" data-hi="पीने का पानी आपूर्ति">Drinking water supply</span></li>
+                                        <li><i class="fas fa-bolt"></i> <span data-en="Electricity connection" data-hi="बिजली कनेक्शन">Electricity connection</span></li>
+                                        <li><i class="fas fa-school"></i> <span data-en="School infrastructure" data-hi="स्कूल बुनियादी ढांचा">School infrastructure</span></li>
+                                        <li><i class="fas fa-hospital"></i> <span data-en="Healthcare facilities" data-hi="स्वास्थ्य सुविधाएं">Healthcare facilities</span></li>
+                                        <li><i class="fas fa-wifi"></i> <span data-en="Internet connectivity" data-hi="इंटरनेट कनेक्टिविटी">Internet connectivity</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Agricultural support" data-hi="कृषि समर्थन">Agricultural support</span></li>
+                                        <li><i class="fas fa-briefcase"></i> <span data-en="Livelihood opportunities" data-hi="आजीविका के अवसर">Livelihood opportunities</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Tribal community villages" data-hi="आदिवासी समुदाय गांव">Tribal community villages</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Particularly Vulnerable Tribal Groups" data-hi="विशेष रूप से कमजोर जनजातीय समूह">Particularly Vulnerable Tribal Groups</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Remote and inaccessible areas" data-hi="दूरस्थ और दुर्गम क्षेत्र">Remote and inaccessible areas</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Low development indicators" data-hi="कम विकास संकेतक">Low development indicators</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Forest dwelling communities" data-hi="वन निवासी समुदाय">Forest dwelling communities</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Traditional livelihood dependent" data-hi="पारंपरिक आजीविका निर्भर">Traditional livelihood dependent</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Urban areas excluded" data-hi="शहरी क्षेत्र शामिल नहीं">Urban areas excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Non-tribal villages excluded" data-hi="गैर-आदिवासी गांव शामिल नहीं">Non-tribal villages excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar cards of villagers" data-hi="ग्रामीणों के आधार कार्ड">Aadhaar cards of villagers</span></li>
+                                        <li><i class="fas fa-users"></i> <span data-en="Tribal community certificate" data-hi="आदिवासी समुदाय प्रमाण पत्र">Tribal community certificate</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Village location details" data-hi="गांव स्थान विवरण">Village location details</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Development proposal" data-hi="विकास प्रस्ताव">Development proposal</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Population details" data-hi="जनसंख्या विवरण">Population details</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Educational status report" data-hi="शैक्षिक स्थिति रिपोर्ट">Educational status report</span></li>
+                                        <li><i class="fas fa-stethoscope"></i> <span data-en="Health infrastructure report" data-hi="स्वास्थ्य बुनियादी ढांचा रिपोर्ट">Health infrastructure report</span></li>
+                                        <li><i class="fas fa-road"></i> <span data-en="Connectivity status report" data-hi="कनेक्टिविटी स्थिति रिपोर्ट">Connectivity status report</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://tribal.gov.in/janjatiya-unnat-gram" class="scheme-link" target="_blank" data-en="Apply for Tribal Development" data-hi="आदिवासी विकास के लिए आवेदन करें">
+                                <i class="fas fa-home"></i>
+                                Apply for Tribal Development
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- National Mission on High Yielding Seeds -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="high-yield-seeds" data-en="National Mission on High Yielding Seeds" data-hi="उच्च उपज बीजों पर राष्ट्रीय मिशन">
+                        National Mission on High Yielding Seeds
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('seeds-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Promotion of High Yield Seed Varieties" data-hi="उच्च उपज बीज किस्मों का प्रचार">
+                                Promotion of High Yield Seed Varieties
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="seeds-details">
+                            <p data-en="Mission to develop and distribute high yielding, climate resilient seed varieties to enhance agricultural productivity" 
+                               data-hi="कृषि उत्पादकता बढ़ाने के लिए उच्च उपज, जलवायु लचीला बीज किस्मों को विकसित और वितरित करने का मिशन">
+                               Mission to develop and distribute high yielding, climate resilient seed varieties to enhance agricultural productivity
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-seedling"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-dna"></i> <span data-en="High yield seed varieties" data-hi="उच्च उपज बीज किस्में">High yield seed varieties</span></li>
+                                        <li><i class="fas fa-cloud-sun"></i> <span data-en="Climate resilient seeds" data-hi="जलवायु लचीला बीज">Climate resilient seeds</span></li>
+                                        <li><i class="fas fa-bug"></i> <span data-en="Disease resistant varieties" data-hi="रोग प्रतिरोधी किस्में">Disease resistant varieties</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Water efficient crops" data-hi="पानी कुशल फसलें">Water efficient crops</span></li>
+                                        <li><i class="fas fa-clock"></i> <span data-en="Short duration crops" data-hi="कम अवधि की फसलें">Short duration crops</span></li>
+                                        <li><i class="fas fa-flask"></i> <span data-en="Research and development" data-hi="अनुसंधान और विकास">Research and development</span></li>
+                                        <li><i class="fas fa-truck"></i> <span data-en="Seed distribution network" data-hi="बीज वितरण नेटवर्क">Seed distribution network</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Farmer training programs" data-hi="किसान प्रशिक्षण कार्यक्रम">Farmer training programs</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Farmers across India" data-hi="पूरे भारत के किसान">Farmers across India</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Agricultural institutions" data-hi="कृषि संस्थान">Agricultural institutions</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Seed production companies" data-hi="बीज उत्पादन कंपनियां">Seed production companies</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Research organizations" data-hi="अनुसंधान संगठन">Research organizations</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="State agriculture departments" data-hi="राज्य कृषि विभाग">State agriculture departments</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Krishi Vigyan Kendras" data-hi="कृषि विज्ञान केंद्र">Krishi Vigyan Kendras</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Individual hobby gardeners excluded" data-hi="व्यक्तिगत शौकिया माली शामिल नहीं">Individual hobby gardeners excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Non-agricultural use excluded" data-hi="गैर-कृषि उपयोग शामिल नहीं">Non-agricultural use excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Land ownership proof" data-hi="भूमि स्वामित्व प्रमाण">Land ownership proof</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Farm registration" data-hi="फार्म पंजीकरण">Farm registration</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Crop cultivation history" data-hi="फसल खेती इतिहास">Crop cultivation history</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://agriculture.gov.in/high-yield-seeds" class="scheme-link" target="_blank" data-en="Apply for Seed Mission" data-hi="बीज मिशन के लिए आवेदन करें">
+                                <i class="fas fa-seedling"></i>
+                                Apply for Seed Mission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add remaining 5 schemes similarly with complete details and government links -->
+                <!-- Prime Minister Dhan-Dhaanya Krishi Yojana -->
+                <!-- Electric Mobility Promotion Scheme (EMPS) 2024 -->
+                <!-- Subhadra Yojana (Odisha) -->
+                <!-- Green India Digital Mission -->
+                <!-- Bharat Skill Connect Portal -->
+
+
+                                 <!-- Prime Minister Dhan-Dhaanya Krishi Yojana -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="dhan-dhaanya" data-en="Prime Minister Dhan-Dhaanya Krishi Yojana" data-hi="प्रधानमंत्री धन-धान्य कृषि योजना">
+                        Prime Minister Dhan-Dhaanya Krishi Yojana
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('dhan-dhaanya-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Wealth and Grain Agriculture Scheme" data-hi="धन और अनाज कृषि योजना">
+                                Wealth and Grain Agriculture Scheme
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="dhan-dhaanya-details">
+                            <p data-en="Comprehensive agricultural scheme focusing on grain production and farmer wealth creation" 
+                               data-hi="अनाज उत्पादन और किसान धन सृजन पर केंद्रित व्यापक कृषि योजना">
+                               Comprehensive agricultural scheme focusing on grain production and farmer wealth creation
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-wheat"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="₹10,000 per acre support" data-hi="₹10,000 प्रति एकड़ समर्थन">₹10,000 per acre support</span></li>
+                                        <li><i class="fas fa-tractor"></i> <span data-en="Modern farming equipment" data-hi="आधुनिक खेती उपकरण">Modern farming equipment</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Quality seeds supply" data-hi="गुणवत्ता बीज आपूर्ति">Quality seeds supply</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Irrigation facilities" data-hi="सिंचाई सुविधाएं">Irrigation facilities</span></li>
+                                        <li><i class="fas fa-warehouse"></i> <span data-en="Storage infrastructure" data-hi="भंडारण बुनियादी ढांचा">Storage infrastructure</span></li>
+                                        <li><i class="fas fa-truck"></i> <span data-en="Transportation support" data-hi="परिवहन समर्थन">Transportation support</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Crop insurance coverage" data-hi="फसल बीमा कवरेज">Crop insurance coverage</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Market price assurance" data-hi="बाजार मूल्य आश्वासन">Market price assurance</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Grain growing farmers" data-hi="अनाज उगाने वाले किसान">Grain growing farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Minimum 2 acres land" data-hi="न्यूनतम 2 एकड़ जमीन">Minimum 2 acres land</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Registered with agriculture dept" data-hi="कृषि विभाग के साथ पंजीकृत">Registered with agriculture dept</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Small and marginal farmers" data-hi="छोटे और सीमांत किसान">Small and marginal farmers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Women farmers priority" data-hi="महिला किसान प्राथमिकता">Women farmers priority</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="SC/ST farmers focus" data-hi="एससी/एसटी किसान फोकस">SC/ST farmers focus</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Commercial crops excluded" data-hi="वाणिज्यिक फसलें शामिल नहीं">Commercial crops excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Large corporates excluded" data-hi="बड़े कॉर्पोरेट शामिल नहीं">Large corporates excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-map"></i> <span data-en="Land ownership documents" data-hi="भूमि स्वामित्व दस्तावेज">Land ownership documents</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Kisan credit card" data-hi="किसान क्रेडिट कार्ड">Kisan credit card</span></li>
+                                        <li><i class="fas fa-wheat"></i> <span data-en="Crop cultivation proof" data-hi="फसल खेती प्रमाण">Crop cultivation proof</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://agriculture.gov.in/dhan-dhaanya" class="scheme-link" target="_blank" data-en="Apply for Dhan-Dhaanya Scheme" data-hi="धन-धान्य योजना के लिए आवेदन करें">
+                                <i class="fas fa-wheat"></i>
+                                Apply for Dhan-Dhaanya Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electric Mobility Promotion Scheme (EMPS) 2024 -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="electric-mobility" data-en="Electric Mobility Promotion Scheme (EMPS) 2024" data-hi="इलेक्ट्रिक मोबिलिटी प्रमोशन स्कीम (ईएमपीएस) 2024">
+                        Electric Mobility Promotion Scheme (EMPS) 2024
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('electric-mobility-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Promoting Electric Vehicle Adoption" data-hi="इलेक्ट्रिक वाहन अपनाने को बढ़ावा">
+                                Promoting Electric Vehicle Adoption
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="electric-mobility-details">
+                            <p data-en="Incentive scheme to promote adoption of electric vehicles and develop charging infrastructure" 
+                               data-hi="इलेक्ट्रिक वाहनों को अपनाने और चार्जिंग बुनियादी ढांचे को विकसित करने के लिए प्रोत्साहन योजना">
+                               Incentive scheme to promote adoption of electric vehicles and develop charging infrastructure
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-car"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="Up to ₹1.5 lakh subsidy on EVs" data-hi="ईवी पर ₹1.5 लाख तक सब्सिडी">Up to ₹1.5 lakh subsidy on EVs</span></li>
+                                        <li><i class="fas fa-bolt"></i> <span data-en="Charging station setup support" data-hi="चार्जिंग स्टेशन सेटअप समर्थन">Charging station setup support</span></li>
+                                        <li><i class="fas fa-recycle"></i> <span data-en="Green vehicle promotion" data-hi="ग्रीन वाहन प्रमोशन">Green vehicle promotion</span></li>
+                                        <li><i class="fas fa-gas-pump"></i> <span data-en="Reduced fuel costs" data-hi="कम ईंधन लागत">Reduced fuel costs</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Pollution control benefits" data-hi="प्रदूषण नियंत्रण लाभ">Pollution control benefits</span></li>
+                                        <li><i class="fas fa-taxi"></i> <span data-en="Commercial EV support" data-hi="वाणिज्यिक ईवी समर्थन">Commercial EV support</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Home charging solutions" data-hi="होम चार्जिंग सॉल्यूशंस">Home charging solutions</span></li>
+                                        <li><i class="fas fa-road"></i> <span data-en="Road tax exemption" data-hi="रोड टैक्स छूट">Road tax exemption</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian citizens and companies" data-hi="भारतीय नागरिक और कंपनियां">Indian citizens and companies</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="First-time EV buyers" data-hi="पहली बार ईवी खरीदार">First-time EV buyers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Registered vehicle owners" data-hi="पंजीकृत वाहन मालिक">Registered vehicle owners</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Commercial fleet operators" data-hi="वाणिज्यिक फ्लीट ऑपरेटर">Commercial fleet operators</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Charging infrastructure providers" data-hi="चार्जिंग इंफ्रास्ट्रक्चर प्रदाता">Charging infrastructure providers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="MSME manufacturers" data-hi="एमएसएमई निर्माता">MSME manufacturers</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Existing EV owners excluded" data-hi="मौजूदा ईवी मालिक शामिल नहीं">Existing EV owners excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Non-electric vehicles excluded" data-hi="गैर-इलेक्ट्रिक वाहन शामिल नहीं">Non-electric vehicles excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Vehicle purchase invoice" data-hi="वाहन खरीद चालान">Vehicle purchase invoice</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-car"></i> <span data-en="Vehicle RC copy" data-hi="वाहन आरसी कॉपी">Vehicle RC copy</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Vehicle photographs" data-hi="वाहन फोटोग्राफ">Vehicle photographs</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://emps.gov.in" class="scheme-link" target="_blank" data-en="Apply for EMPS Scheme" data-hi="ईएमपीएस योजना के लिए आवेदन करें">
+                                <i class="fas fa-car"></i>
+                                Apply for EMPS Scheme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subhadra Yojana (Odisha) -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="subhadra" data-en="Subhadra Yojana (Odisha)" data-hi="सुभद्रा योजना (ओडिशा)">
+                        Subhadra Yojana (Odisha)
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('subhadra-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Women Empowerment Scheme in Odisha" data-hi="ओडिशा में महिला सशक्तिकरण योजना">
+                                Women Empowerment Scheme in Odisha
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="subhadra-details">
+                            <p data-en="State government scheme for women empowerment and financial independence in Odisha" 
+                               data-hi="ओडिशा में महिला सशक्तिकरण और वित्तीय स्वतंत्रता के लिए राज्य सरकार योजना">
+                               State government scheme for women empowerment and financial independence in Odisha
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-female"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="₹50,000 financial assistance" data-hi="₹50,000 वित्तीय सहायता">₹50,000 financial assistance</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Education support" data-hi="शिक्षा समर्थन">Education support</span></li>
+                                        <li><i class="fas fa-briefcase"></i> <span data-en="Skill development training" data-hi="कौशल विकास प्रशिक्षण">Skill development training</span></li>
+                                        <li><i class="fas fa-hand-holding-usd"></i> <span data-en="Entrepreneurship support" data-hi="उद्यमिता समर्थन">Entrepreneurship support</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Housing assistance" data-hi="आवास सहायता">Housing assistance</span></li>
+                                        <li><i class="fas fa-heartbeat"></i> <span data-en="Healthcare benefits" data-hi="स्वास्थ्य देखभाल लाभ">Healthcare benefits</span></li>
+                                        <li><i class="fas fa-shield-alt"></i> <span data-en="Legal aid support" data-hi="कानूनी सहायता समर्थन">Legal aid support</span></li>
+                                        <li><i class="fas fa-child"></i> <span data-en="Child care support" data-hi="बच्चे की देखभाल समर्थन">Child care support</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Women residents of Odisha" data-hi="ओडिशा की महिला निवासी">Women residents of Odisha</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Age 18-60 years" data-hi="18-60 वर्ष की आयु">Age 18-60 years</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Below poverty line" data-hi="गरीबी रेखा से नीचे">Below poverty line</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Single women/widows priority" data-hi="अविवाहित महिलाएं/विधवा प्राथमिकता">Single women/widows priority</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="SC/ST women focus" data-hi="एससी/एसटी महिला फोकस">SC/ST women focus</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Rural women encouraged" data-hi="ग्रामीण महिलाएं प्रोत्साहित">Rural women encouraged</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Government employees excluded" data-hi="सरकारी कर्मचारी शामिल नहीं">Government employees excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Income tax payers excluded" data-hi="आयकर दाता शामिल नहीं">Income tax payers excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Odisha residence proof" data-hi="ओडिशा निवास प्रमाण">Odisha residence proof</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-file-invoice"></i> <span data-en="Income certificate" data-hi="आय प्रमाण पत्र">Income certificate</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Passport size photos" data-hi="पासपोर्ट साइज फोटो">Passport size photos</span></li>
+                                        <li><i class="fas fa-birthday-cake"></i> <span data-en="Age proof" data-hi="उम्र प्रमाण">Age proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://odisha.gov.in/subhadra-yojana" class="scheme-link" target="_blank" data-en="Apply for Subhadra Yojana" data-hi="सुभद्रा योजना के लिए आवेदन करें">
+                                <i class="fas fa-female"></i>
+                                Apply for Subhadra Yojana
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green India Digital Mission -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="green-india" data-en="Green India Digital Mission" data-hi="ग्रीन इंडिया डिजिटल मिशन">
+                        Green India Digital Mission
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('green-india-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="Digital Solutions for Environmental Conservation" data-hi="पर्यावरण संरक्षण के लिए डिजिटल समाधान">
+                                Digital Solutions for Environmental Conservation
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="green-india-details">
+                            <p data-en="Digital initiative combining technology and environmental conservation for sustainable development" 
+                               data-hi="सतत विकास के लिए प्रौद्योगिकी और पर्यावरण संरक्षण को जोड़ने वाली डिजिटल पहल">
+                               Digital initiative combining technology and environmental conservation for sustainable development
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-tree"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-laptop"></i> <span data-en="Digital monitoring systems" data-hi="डिजिटल मॉनिटरिंग सिस्टम">Digital monitoring systems</span></li>
+                                        <li><i class="fas fa-satellite"></i> <span data-en="Satellite forest monitoring" data-hi="उपग्रह वन मॉनिटरिंग">Satellite forest monitoring</span></li>
+                                        <li><i class="fas fa-recycle"></i> <span data-en="Waste management solutions" data-hi="अपशिष्ट प्रबंधन समाधान">Waste management solutions</span></li>
+                                        <li><i class="fas fa-tint"></i> <span data-en="Water conservation tech" data-hi="जल संरक्षण टेक">Water conservation tech</span></li>
+                                        <li><i class="fas fa-solar-panel"></i> <span data-en="Renewable energy promotion" data-hi="नवीकरणीय ऊर्जा प्रमोशन">Renewable energy promotion</span></li>
+                                        <li><i class="fas fa-seedling"></i> <span data-en="Afforestation tracking" data-hi="वनीकरण ट्रैकिंग">Afforestation tracking</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Carbon footprint analysis" data-hi="कार्बन फुटप्रिंट विश्लेषण">Carbon footprint analysis</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile app for citizens" data-hi="नागरिकों के लिए मोबाइल ऐप">Mobile app for citizens</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Environmental organizations" data-hi="पर्यावरण संगठन">Environmental organizations</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Tech startups in green sector" data-hi="ग्रीन सेक्टर में टेक स्टार्टअप">Tech startups in green sector</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Research institutions" data-hi="अनुसंधान संस्थान">Research institutions</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Educational institutions" data-hi="शैक्षणिक संस्थान">Educational institutions</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Local government bodies" data-hi="स्थानीय सरकारी निकाय">Local government bodies</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Community organizations" data-hi="सामुदायिक संगठन">Community organizations</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Polluting industries excluded" data-hi="प्रदूषण फैलाने वाले उद्योग शामिल नहीं">Polluting industries excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Non-environmental projects excluded" data-hi="गैर-पर्यावरणीय परियोजनाएं शामिल नहीं">Non-environmental projects excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Organization registration" data-hi="संगठन पंजीकरण">Organization registration</span></li>
+                                        <li><i class="fas fa-file-text"></i> <span data-en="Project proposal" data-hi="परियोजना प्रस्ताव">Project proposal</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar of team members" data-hi="टीम सदस्यों का आधार">Aadhaar of team members</span></li>
+                                        <li><i class="fas fa-chart-bar"></i> <span data-en="Environmental impact report" data-hi="पर्यावरणीय प्रभाव रिपोर्ट">Environmental impact report</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Contact details" data-hi="संपर्क विवरण">Contact details</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://greenindia.gov.in/digital-mission" class="scheme-link" target="_blank" data-en="Apply for Green Mission" data-hi="ग्रीन मिशन के लिए आवेदन करें">
+                                <i class="fas fa-tree"></i>
+                                Apply for Green Mission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bharat Skill Connect Portal -->
+                <div class="scheme-category">
+                    <h2 class="category-title" id="bharat-skill" data-en="Bharat Skill Connect Portal" data-hi="भारत स्किल कनेक्ट पोर्टल">
+                        Bharat Skill Connect Portal
+                    </h2>
+                    <div class="scheme-card" onclick="toggleSchemeDetails('bharat-skill-details')">
+                        <div class="scheme-header">
+                            <h3 data-en="National Skill Development and Job Portal" data-hi="राष्ट्रीय कौशल विकास और नौकरी पोर्टल">
+                                National Skill Development and Job Portal
+                            </h3>
+                            <span class="scheme-toggle">+</span>
+                        </div>
+                        <div class="scheme-details" id="bharat-skill-details">
+                            <p data-en="Comprehensive platform connecting skilled youth with employment opportunities across India" 
+                               data-hi="कुशल युवाओं को पूरे भारत में रोजगार के अवसरों से जोड़ने वाला व्यापक प्लेटफॉर्म">
+                               Comprehensive platform connecting skilled youth with employment opportunities across India
+                            </p>
+                            <div class="scheme-info">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-graduate"></i> <span data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-briefcase"></i> <span data-en="Job matching algorithm" data-hi="नौकरी मिलान एल्गोरिदम">Job matching algorithm</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Skill certification" data-hi="कौशल प्रमाणन">Skill certification</span></li>
+                                        <li><i class="fas fa-laptop-code"></i> <span data-en="Online training courses" data-hi="ऑनलाइन प्रशिक्षण पाठ्यक्रम">Online training courses</span></li>
+                                        <li><i class="fas fa-building"></i> <span data-en="Industry partnerships" data-hi="उद्योग भागीदारी">Industry partnerships</span></li>
+                                        <li><i class="fas fa-rupee-sign"></i> <span data-en="Placement assistance" data-hi="प्लेसमेंट सहायता">Placement assistance</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile app access" data-hi="मोबाइल ऐप एक्सेस">Mobile app access</span></li>
+                                        <li><i class="fas fa-chart-line"></i> <span data-en="Career counseling" data-hi="करियर काउंसलिंग">Career counseling</span></li>
+                                        <li><i class="fas fa-award"></i> <span data-en="Recognition for skilled workers" data-hi="कुशल कर्मियों के लिए मान्यता">Recognition for skilled workers</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-user-tie"></i> <span data-en="Eligibility Criteria" data-hi="पात्रता मानदंड">Eligibility Criteria</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> <span data-en="Indian citizens aged 18-35" data-hi="18-35 वर्ष के भारतीय नागरिक">Indian citizens aged 18-35</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Skilled and unskilled youth" data-hi="कुशल और अकुशल युवा">Skilled and unskilled youth</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Educational qualifications" data-hi="शैक्षिक योग्यता">Educational qualifications</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Job seekers and employers" data-hi="नौकरी चाहने वाले और नियोक्ता">Job seekers and employers</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Training institutes" data-hi="प्रशिक्षण संस्थान">Training institutes</span></li>
+                                        <li><i class="fas fa-check"></i> <span data-en="Industry associations" data-hi="उद्योग संघ">Industry associations</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Below 18 years excluded" data-hi="18 वर्ष से कम उम्र शामिल नहीं">Below 18 years excluded</span></li>
+                                        <li><i class="fas fa-times"></i> <span data-en="Foreign nationals excluded" data-hi="विदेशी नागरिक शामिल नहीं">Foreign nationals excluded</span></li>
+                                    </ul>
+                                </div>
+                                <div class="info-section">
+                                    <h4><i class="fas fa-file-alt"></i> <span data-en="Required Documents" data-hi="आवश्यक दस्तावेज">Required Documents</span></h4>
+                                    <ul>
+                                        <li><i class="fas fa-id-card"></i> <span data-en="Aadhaar card" data-hi="आधार कार्ड">Aadhaar card</span></li>
+                                        <li><i class="fas fa-graduation-cap"></i> <span data-en="Educational certificates" data-hi="शैक्षिक प्रमाण पत्र">Educational certificates</span></li>
+                                        <li><i class="fas fa-university"></i> <span data-en="Bank account details" data-hi="बैंक खाता विवरण">Bank account details</span></li>
+                                        <li><i class="fas fa-file-contract"></i> <span data-en="Skill certificates" data-hi="कौशल प्रमाण पत्र">Skill certificates</span></li>
+                                        <li><i class="fas fa-camera"></i> <span data-en="Passport size photo" data-hi="पासपोर्ट साइज फोटो">Passport size photo</span></li>
+                                        <li><i class="fas fa-home"></i> <span data-en="Address proof" data-hi="पता प्रमाण">Address proof</span></li>
+                                        <li><i class="fas fa-mobile-alt"></i> <span data-en="Mobile number" data-hi="मोबाइल नंबर">Mobile number</span></li>
+                                        <li><i class="fas fa-envelope"></i> <span data-en="Email ID" data-hi="ईमेल आईडी">Email ID</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://bharatskill.gov.in" class="scheme-link" target="_blank" data-en="Register on Skill Portal" data-hi="स्किल पोर्टल पर पंजीकरण करें">
+                                <i class="fas fa-user-graduate"></i>
+                                Register on Skill Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">सरकारी सहायक</div>
+                    <p class="footer-about" data-en="Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives." 
+                       data-hi="सरकारी योजनाओं और लाभों तक पहुंच में आपका विश्वसनीय साथी। हम नागरिकों और सरकारी पहलों के बीच की खाई को पाटते हैं।">
+                       Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h4>
+                    <a href="index.html" data-en="Home" data-hi="होम">Home</a>
+                    <a href="schemes.html" data-en="All Schemes" data-hi="सभी योजनाएं">All Schemes</a>
+                    <a href="about.html" data-en="About Us" data-hi="हमारे बारे में">About Us</a>
+                    <a href="#" data-en="How to Apply" data-hi="आवेदन कैसे करें">How to Apply</a>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-en="Contact Info" data-hi="संपर्क जानकारी">Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@sarkarisahayak.in</p>
+                    <p><i class="fas fa-phone"></i> +91-1800-123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sarkari Sahayak | Designed by Prince Maurya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Language Toggle
+        function toggleLanguage() {
+            const currentLang = document.documentElement.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            document.documentElement.setAttribute('data-lang', newLang);
+            
+            document.querySelectorAll('[data-en][data-hi]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${newLang}`);
+            });
+            
+            const langText = document.querySelector('.lang-text');
+            langText.textContent = langText.getAttribute(`data-${newLang}`);
+            
+            localStorage.setItem('language', newLang);
+        }
+
+        // Scheme Details Toggle
+        function toggleSchemeDetails(schemeId) {
+            const details = document.getElementById(schemeId);
+            const toggle = details.previousElementSibling.querySelector('.scheme-toggle');
+            
+            if (details.classList.contains('active')) {
+                details.classList.remove('active');
+                toggle.textContent = '+';
+            } else {
+                // Close all other open schemes
+                document.querySelectorAll('.scheme-details.active').forEach(openDetails => {
+                    if (openDetails.id !== schemeId) {
+                        openDetails.classList.remove('active');
+                        openDetails.previousElementSibling.querySelector('.scheme-toggle').textContent = '+';
+                    }
+                });
+                
+                details.classList.add('active');
+                toggle.textContent = '−';
+            }
+        }
+
+        // Load saved preferences
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedLang = localStorage.getItem('language') || 'en';
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.documentElement.setAttribute('data-lang', savedLang);
+            
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+            
+            document.querySelectorAll('[data-en][data-hi]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${savedLang}`);
+            });
+            
+            const langText = document.querySelector('.lang-text');
+            langText.textContent = langText.getAttribute(`data-${savedLang}`);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -82,17 +82,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
         }
 
         .nav-logo img {
-            height: 45px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-logo:hover img {
-            transform: scale(1.05);
+            height: 40px;
         }
 
         .nav-logo h2 {
@@ -383,17 +376,9 @@
         }
 
         .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            height: 35px;
-            width: auto;
         }
 
         .footer-about {
@@ -458,43 +443,29 @@
             opacity: 0.7;
         }
 
-        /* Logo Placeholder */
-        .logo-placeholder {
-            width: 45px;
-            height: 45px;
-            background: var(--accent-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
                 gap: 1rem;
             }
-            
+           
             .hero-title {
                 font-size: 2.5rem;
             }
-            
+           
             .hero-subtitle {
                 font-size: 1.2rem;
             }
-            
+           
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            
+           
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            
+           
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -504,10 +475,6 @@
                 background: transparent;
                 max-height: 300px;
             }
-            
-            .nav-logo h2 {
-                font-size: 1.2rem;
-            }
         }
     </style>
 </head>
@@ -515,14 +482,10 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <!-- Replace this placeholder with your actual logo -->
-               <img src="https://lh3.googleusercontent.com/rd-gg/AIJ2gl8tBxDcF0QuKygMTH4jqSE1-NaDC99sbq57A3EBlfRkc63hvUDIt05G-0f_L6tjIob2y4NMPj85MdZc_7-ed-AzJ_j6z3OrNX1wrH0suK7kB-cZbW10QnN4CzQWBGuHFR4oddCW5tnaRouzMD-WOurVcSLEqOp7cjfo-3nW9mX4U9FaiUMrArtr0rsiV2Ajs5xuUOFYvXJBk7SBgTk9jF0ncwWKavgTOwIosK5fk53RO-_700_cs-gWFf7mnyrqt-7Kyst51DJZrqcVitYD7bPI0nqHAkQkhsGeLstUaGmjwPwwetpU3Oo906AEWYFZbPyUW1C04uIFnksPftjvDXpYKK9bJSR0vnU63L1peDeyT2r8y8TNDHLuB5eXgY_kfl-Vtn-MU66iDE13tbD-UnwSu9D_yN8rd9x7thNAwALFxLiZwbm_SPTtraZ4pTiyh5mbz8lud4Xe4Hd7lpDHQIfP_Vn6JcdBMKiHG-6bx4xrdYIFz8EnzMZIbDFuD03lU-_hO_Gs3UqVmR9iObrOhz8RBLjgQ3QaSu2WPSQsCNf-IrcMzuw-oCJLYWU-W6ekGXUSD83NlTCaWA3Sg7RFmP8PVEwnloxmKbpJG6wupLT3A6aq2X_v676qiCAi3Fcbslu1omphp6cGlVYF3H5fH2VjVNTRCUJJFfyjvAydiSz8_R0zRZg78uB_w83XAUWkeL2LUoPrp0q5M5v2Goau7rmBH7zca9i1m2KcALqsQYNHKmzftLEIRPVdbhtMtH74IzRYYezfaWuppo3vAnUhMz7N0qS3JdKn3l-eVb_YwZZ4XsOTerZvE9itrqullg35DhK7ZBwcn06aKCdx7tE0ojRJlXpcVRcZQGSU15MBfkGPEFtLuOPZK_dZat1indRkHw5N5afxHuKLTjRbuY6N4J5jPRkErtSvgeJvL6ztK9e9uUqvFBsGHe_bW1WaITpYR5zJrOsE5ak5S9YSAjEh4mZ6oC7QPS2dNQ-ztvW3jxZU0qwzzHBOPy4y9jzpIOLGd7-gPAnTpOku_btUzMK85_j1bXpS0c2_HvvaJZuKNV30LBTY-UZLP41ngKLInDc754H7t0m9vDsiijX9l2YSUiffG-Ax7T295ebwISRHzd7aqE5FMAo4WWcxhFfBPRJwgW5GBGOvDQZSmpMmAZmelqVu4544ylYSeReyo-UO6S4X6pY4wI-_5pttg_N7VnwCUuN0OyuopGmgn7YLL-LZHPW6ijVzLSZgvB7_6pPwjK2DbMBdbyWY6EluLojA8e9XaltgoatjzU9-HGskkiCiFJAxARUa7IKS63LVMQmKNL9RjrAteOJR4ygKjMn51O_1Vvaa32U9IcoQVNGMd3E=s1024-rj" alt="Sarkari Sahayak Logo">
-                <!-- For your actual logo, use:
-                <img src="https://lh3.googleusercontent.com/rd-gg/AIJ2gl8tBxDcF0QuKygMTH4jqSE1-NaDC99sbq57A3EBlfRkc63hvUDIt05G-0f_L6tjIob2y4NMPj85MdZc_7-ed-AzJ_j6z3OrNX1wrH0suK7kB-cZbW10QnN4CzQWBGuHFR4oddCW5tnaRouzMD-WOurVcSLEqOp7cjfo-3nW9mX4U9FaiUMrArtr0rsiV2Ajs5xuUOFYvXJBk7SBgTk9jF0ncwWKavgTOwIosK5fk53RO-_700_cs-gWFf7mnyrqt-7Kyst51DJZrqcVitYD7bPI0nqHAkQkhsGeLstUaGmjwPwwetpU3Oo906AEWYFZbPyUW1C04uIFnksPftjvDXpYKK9bJSR0vnU63L1peDeyT2r8y8TNDHLuB5eXgY_kfl-Vtn-MU66iDE13tbD-UnwSu9D_yN8rd9x7thNAwALFxLiZwbm_SPTtraZ4pTiyh5mbz8lud4Xe4Hd7lpDHQIfP_Vn6JcdBMKiHG-6bx4xrdYIFz8EnzMZIbDFuD03lU-_hO_Gs3UqVmR9iObrOhz8RBLjgQ3QaSu2WPSQsCNf-IrcMzuw-oCJLYWU-W6ekGXUSD83NlTCaWA3Sg7RFmP8PVEwnloxmKbpJG6wupLT3A6aq2X_v676qiCAi3Fcbslu1omphp6cGlVYF3H5fH2VjVNTRCUJJFfyjvAydiSz8_R0zRZg78uB_w83XAUWkeL2LUoPrp0q5M5v2Goau7rmBH7zca9i1m2KcALqsQYNHKmzftLEIRPVdbhtMtH74IzRYYezfaWuppo3vAnUhMz7N0qS3JdKn3l-eVb_YwZZ4XsOTerZvE9itrqullg35DhK7ZBwcn06aKCdx7tE0ojRJlXpcVRcZQGSU15MBfkGPEFtLuOPZK_dZat1indRkHw5N5afxHuKLTjRbuY6N4J5jPRkErtSvgeJvL6ztK9e9uUqvFBsGHe_bW1WaITpYR5zJrOsE5ak5S9YSAjEh4mZ6oC7QPS2dNQ-ztvW3jxZU0qwzzHBOPy4y9jzpIOLGd7-gPAnTpOku_btUzMK85_j1bXpS0c2_HvvaJZuKNV30LBTY-UZLP41ngKLInDc754H7t0m9vDsiijX9l2YSUiffG-Ax7T295ebwISRHzd7aqE5FMAo4WWcxhFfBPRJwgW5GBGOvDQZSmpMmAZmelqVu4544ylYSeReyo-UO6S4X6pY4wI-_5pttg_N7VnwCUuN0OyuopGmgn7YLL-LZHPW6ijVzLSZgvB7_6pPwjK2DbMBdbyWY6EluLojA8e9XaltgoatjzU9-HGskkiCiFJAxARUa7IKS63LVMQmKNL9RjrAteOJR4ygKjMn51O_1Vvaa32U9IcoQVNGMd3E=s1024-rj" alt="Sarkari Sahayak Logo">
-                -->
+            <div class="nav-logo">
+                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
                 <h2>सरकारी सहायक</h2>
-            </a>
+            </div>
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link active" data-en="Home" data-hi="होम">Home</a>
@@ -532,6 +495,7 @@
                         Schemes <i class="fas fa-chevron-down"></i>
                     </button>
                     <ul class="dropdown-menu">
+                        <!-- Updated to match all 60+ schemes from schemes.html -->
                         <li class="dropdown-item"><a href="schemes.html#employment-linked" data-en="Employment Linked Incentive" data-hi="रोजगार लिंक्ड प्रोत्साहन">Employment Linked Incentive</a></li>
                         <li class="dropdown-item"><a href="schemes.html#pm-internship" data-en="PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना">PM Internship Scheme</a></li>
                         <li class="dropdown-item"><a href="schemes.html#surya-ghar" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</a></li>
@@ -542,6 +506,41 @@
                         <li class="dropdown-item"><a href="schemes.html#pm-kisan" data-en="PM-KISAN Enhanced" data-hi="पीएम-किसान एन्हांस्ड">PM-KISAN Enhanced</a></li>
                         <li class="dropdown-item"><a href="schemes.html#janjatiya-unnat" data-en="Janjatiya Unnat Gram" data-hi="जनजातीय उन्नत ग्राम">Janjatiya Unnat Gram</a></li>
                         <li class="dropdown-item"><a href="schemes.html#high-yield-seeds" data-en="High Yielding Seeds Mission" data-hi="उच्च उपज बीज मिशन">High Yielding Seeds Mission</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#dhan-dhaanya" data-en="Dhan-Dhaanya Krishi" data-hi="धन-धान्य कृषि">Dhan-Dhaanya Krishi</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#electric-mobility" data-en="Electric Mobility Promotion" data-hi="इलेक्ट्रिक मोबिलिटी प्रमोशन">Electric Mobility Promotion</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#subhadra" data-en="Subhadra Yojana" data-hi="सुभद्रा योजना">Subhadra Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#green-india" data-en="Green India Digital Mission" data-hi="ग्रीन इंडिया डिजिटल मिशन">Green India Digital Mission</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#bharat-skill" data-en="Bharat Skill Connect" data-hi="भारत स्किल कनेक्ट">Bharat Skill Connect</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#ayushman-bharat" data-en="Ayushman Bharat Yojana" data-hi="आयुष्मान भारत योजना">Ayushman Bharat Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#pm-awas" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#ujjwala" data-en="Ujjwala Yojana" data-hi="उज्ज्वला योजना">Ujjwala Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#kisan-samman" data-en="Kisan Samman Nidhi" data-hi="किसान सम्मान निधि">Kisan Samman Nidhi</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#mudra" data-en="Mudra Yojana" data-hi="मुद्रा योजना">Mudra Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#stand-up-india" data-en="Stand Up India" data-hi="स्टैंड अप इंडिया">Stand Up India</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#jeevan-jyoti" data-en="Jeevan Jyoti Bima" data-hi="जीवन ज्योति बीमा">Jeevan Jyoti Bima</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#suraksha-bima" data-en="Suraksha Bima Yojana" data-hi="सुरक्षा बीमा योजना">Suraksha Bima Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#atal-pension" data-en="Atal Pension Yojana" data-hi="अटल पेंशन योजना">Atal Pension Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#digital-saksharta" data-en="Digital Saksharta Abhiyan" data-hi="डिजिटल साक्षरता अभियान">Digital Saksharta Abhiyan</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#rural-livelihood" data-en="National Rural Livelihood" data-hi="राष्ट्रीय ग्रामीण आजीविका">National Rural Livelihood</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#fasal-bima" data-en="Fasal Bima Yojana" data-hi="फसल बीमा योजना">Fasal Bima Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#swachh-bharat" data-en="Swachh Bharat Mission" data-hi="स्वच्छ भारत मिशन">Swachh Bharat Mission</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#digital-india" data-en="Digital India" data-hi="डिजिटल इंडिया">Digital India</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#startup-india" data-en="Startup India" data-hi="स्टार्टअप इंडिया">Startup India</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#garib-kalyan" data-en="Garib Kalyan Yojana" data-hi="गरीब कल्याण योजना">Garib Kalyan Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#national-health" data-en="National Health Mission" data-hi="राष्ट्रीय स्वास्थ्य मिशन">National Health Mission</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#krishi-sinchai" data-en="Krishi Sinchai Yojana" data-hi="कृषि सिंचाई योजना">Krishi Sinchai Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#matru-vandana" data-en="Matru Vandana Yojana" data-hi="मातृ वंदना योजना">Matru Vandana Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#shram-yogi" data-en="Shram Yogi Maan-dhan" data-hi="श्रम योगी मान-धन">Shram Yogi Maan-dhan</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#kisan-maan-dhan" data-en="Kisan Maan Dhan" data-hi="किसान मान धन">Kisan Maan Dhan</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#apprenticeship" data-en="Apprenticeship Scheme" data-hi="अप्रेंटिसशिप योजना">Apprenticeship Scheme</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#matsya-sampada" data-en="Matsya Sampada Yojana" data-hi="मत्स्य संपदा योजना">Matsya Sampada Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#one-nation-ration" data-en="One Nation One Ration" data-hi="वन नेशन वन राशन">One Nation One Ration</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#swanidhi" data-en="Swanidhi Yojana" data-hi="स्वनिधि योजना">Swanidhi Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#nrega" data-en="NREGA" data-hi="मनरेगा">NREGA</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#gram-sadak" data-en="Gram Sadak Yojana" data-hi="ग्राम सड़क योजना">Gram Sadak Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#jan-aushadhi" data-en="Jan Aushadhi Yojana" data-hi="जन औषधि योजना">Jan Aushadhi Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#sukanya" data-en="Sukanya Samriddhi" data-hi="सुकन्या समृद्धि">Sukanya Samriddhi</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#vaya-vandana" data-en="Vaya Vandana Yojana" data-hi="वय वंदना योजना">Vaya Vandana Yojana</a></li>
                     </ul>
                 </li>
             </ul>
@@ -563,11 +562,11 @@
                 <h1 class="hero-title" data-en="Welcome to Sarkari Sahayak " data-hi="सरकारी सहायक में आपका स्वागत है">
                     Welcome to Sarkari Sahayak
                 </h1>
-                <p class="hero-subtitle" data-en="Your Gateway to Government Schemes" 
+                <p class="hero-subtitle" data-en="Your Gateway to Government Schemes"
                    data-hi="सरकारी योजनाओं का आपका गेटवे">
                     Your Gateway to Government Schemes
                 </p>
-                <p class="hero-description" data-en="Discover, understand, and apply for various government schemes with ease. We simplify complex information and make it accessible to every citizen of India in their preferred language." 
+                <p class="hero-description" data-en="Discover, understand, and apply for various government schemes with ease. We simplify complex information and make it accessible to every citizen of India in their preferred language."
                    data-hi="विभिन्न सरकारी योजनाओं को आसानी से खोजें, समझें और आवेदन करें। हम जटिल जानकारी को सरल बनाते हैं और इसे भारत के हर नागरिक के लिए उनकी पसंदीदा भाषा में सुलभ बनाते हैं।">
                     Discover, understand, and apply for various government schemes with ease. We simplify complex information and make it accessible to every citizen of India in their preferred language.
                 </p>
@@ -589,7 +588,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">📋</div>
                     <h3 data-en="Comprehensive Database" data-hi="व्यापक डेटाबेस">Comprehensive Database</h3>
-                    <p data-en="Access detailed information about all central and state government schemes with regular updates" 
+                    <p data-en="Access detailed information about all central and state government schemes with regular updates"
                        data-hi="नियमित अपडेट के साथ केंद्र और राज्य सरकार की सभी योजनाओं की विस्तृत जानकारी तक पहुंच">
                        Access detailed information about all central and state government schemes with regular updates
                     </p>
@@ -597,7 +596,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
                     <h3 data-en="Easy to Understand" data-hi="आसानी से समझें">Easy to Understand</h3>
-                    <p data-en="Simplified explanations in both Hindi and English with step-by-step application guidance" 
+                    <p data-en="Simplified explanations in both Hindi and English with step-by-step application guidance"
                        data-hi="चरण-दर-चरण आवेदन मार्गदर्शन के साथ हिंदी और अंग्रेजी दोनों में सरल स्पष्टीकरण">
                        Simplified explanations in both Hindi and English with step-by-step application guidance
                     </p>
@@ -605,7 +604,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3 data-en="Quick Access" data-hi="त्वरित पहुंच">Quick Access</h3>
-                    <p data-en="Find relevant schemes quickly with our smart categorization and advanced search features" 
+                    <p data-en="Find relevant schemes quickly with our smart categorization and advanced search features"
                        data-hi="हमारी स्मार्ट वर्गीकरण और उन्नत खोज सुविधाओं के साथ प्रासंगिक योजनाएं शीघ्रता से खोजें">
                        Find relevant schemes quickly with our smart categorization and advanced search features
                     </p>
@@ -614,44 +613,15 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>60+</h3>
-                    <p data-en="Government Schemes" data-hi="सरकारी योजनाएं">Government Schemes</p>
-                </div>
-                <div class="stat-item">
-                    <h3>2</h3>
-                    <p data-en="Languages Supported" data-hi="समर्थित भाषाएं">Languages Supported</p>
-                </div>
-                <div class="stat-item">
-                    <h3>24/7</h3>
-                    <p data-en="Accessibility" data-hi="सुलभता">Accessibility</p>
-                </div>
-                <div class="stat-item">
-                    <h3>100%</h3>
-                    <p data-en="Free Service" data-hi="निःशुल्क सेवा">Free Service</p>
-                </div>
-            </div>
-        </div>
-    </section>
+ 
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">
-                        <!-- Replace this placeholder with your actual logo -->
-                        <div class="logo-placeholder">SS</div>
-                        <!-- For your actual logo, use:
-                        <img src="https://your-actual-logo-url.com/logo.png" alt="Sarkari Sahayak Logo">
-                        -->
-                        <span>सरकारी सहायक</span>
-                    </div>
-                    <p class="footer-about" data-en="Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives." 
+                    <div class="footer-logo">सरकारी सहायक</div>
+                    <p class="footer-about" data-en="Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives."
                        data-hi="सरकारी योजनाओं और लाभों तक पहुंच में आपका विश्वसनीय साथी। हम नागरिकों और सरकारी पहलों के बीच की खाई को पाटते हैं।">
                        Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives.
                     </p>
@@ -688,10 +658,10 @@
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', newTheme);
-            
+           
             const themeIcon = document.querySelector('.theme-icon');
             themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
-            
+           
             // Save theme preference
             localStorage.setItem('theme', newTheme);
         }
@@ -701,14 +671,14 @@
             const currentLang = document.documentElement.getAttribute('data-lang');
             const newLang = currentLang === 'en' ? 'hi' : 'en';
             document.documentElement.setAttribute('data-lang', newLang);
-            
+           
             document.querySelectorAll('[data-en][data-hi]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${newLang}`);
             });
-            
+           
             const langText = document.querySelector('.lang-text');
             langText.textContent = langText.getAttribute(`data-${newLang}`);
-            
+           
             // Save language preference
             localStorage.setItem('language', newLang);
         }
@@ -717,17 +687,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             const savedLang = localStorage.getItem('language') || 'en';
-            
+           
             document.documentElement.setAttribute('data-theme', savedTheme);
             document.documentElement.setAttribute('data-lang', savedLang);
-            
+           
             const themeIcon = document.querySelector('.theme-icon');
             themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-            
+           
             document.querySelectorAll('[data-en][data-hi]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${savedLang}`);
             });
-            
+           
             const langText = document.querySelector('.lang-text');
             langText.textContent = langText.getAttribute(`data-${savedLang}`);
         });

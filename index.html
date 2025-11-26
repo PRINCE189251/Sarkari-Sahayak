@@ -82,10 +82,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .nav-logo img {
-            height: 40px;
+            height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover img {
+            transform: scale(1.05);
         }
 
         .nav-logo h2 {
@@ -376,9 +383,17 @@
         }
 
         .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            width: auto;
         }
 
         .footer-about {
@@ -443,6 +458,20 @@
             opacity: 0.7;
         }
 
+        /* Logo Placeholder */
+        .logo-placeholder {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
@@ -475,6 +504,10 @@
                 background: transparent;
                 max-height: 300px;
             }
+            
+            .nav-logo h2 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -482,10 +515,14 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
+            <a href="index.html" class="nav-logo">
+                <!-- Replace this placeholder with your actual logo -->
+                <div class="logo-placeholder">SS</div>
+                <!-- For your actual logo, use:
+                <img src="https://your-actual-logo-url.com/logo.png" alt="Sarkari Sahayak Logo">
+                -->
                 <h2>सरकारी सहायक</h2>
-            </div>
+            </a>
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link active" data-en="Home" data-hi="होम">Home</a>
@@ -495,7 +532,6 @@
                         Schemes <i class="fas fa-chevron-down"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <!-- Updated to match all 60+ schemes from schemes.html -->
                         <li class="dropdown-item"><a href="schemes.html#employment-linked" data-en="Employment Linked Incentive" data-hi="रोजगार लिंक्ड प्रोत्साहन">Employment Linked Incentive</a></li>
                         <li class="dropdown-item"><a href="schemes.html#pm-internship" data-en="PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना">PM Internship Scheme</a></li>
                         <li class="dropdown-item"><a href="schemes.html#surya-ghar" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</a></li>
@@ -506,41 +542,6 @@
                         <li class="dropdown-item"><a href="schemes.html#pm-kisan" data-en="PM-KISAN Enhanced" data-hi="पीएम-किसान एन्हांस्ड">PM-KISAN Enhanced</a></li>
                         <li class="dropdown-item"><a href="schemes.html#janjatiya-unnat" data-en="Janjatiya Unnat Gram" data-hi="जनजातीय उन्नत ग्राम">Janjatiya Unnat Gram</a></li>
                         <li class="dropdown-item"><a href="schemes.html#high-yield-seeds" data-en="High Yielding Seeds Mission" data-hi="उच्च उपज बीज मिशन">High Yielding Seeds Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#dhan-dhaanya" data-en="Dhan-Dhaanya Krishi" data-hi="धन-धान्य कृषि">Dhan-Dhaanya Krishi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#electric-mobility" data-en="Electric Mobility Promotion" data-hi="इलेक्ट्रिक मोबिलिटी प्रमोशन">Electric Mobility Promotion</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#subhadra" data-en="Subhadra Yojana" data-hi="सुभद्रा योजना">Subhadra Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#green-india" data-en="Green India Digital Mission" data-hi="ग्रीन इंडिया डिजिटल मिशन">Green India Digital Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#bharat-skill" data-en="Bharat Skill Connect" data-hi="भारत स्किल कनेक्ट">Bharat Skill Connect</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#ayushman-bharat" data-en="Ayushman Bharat Yojana" data-hi="आयुष्मान भारत योजना">Ayushman Bharat Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#pm-awas" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#ujjwala" data-en="Ujjwala Yojana" data-hi="उज्ज्वला योजना">Ujjwala Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#kisan-samman" data-en="Kisan Samman Nidhi" data-hi="किसान सम्मान निधि">Kisan Samman Nidhi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#mudra" data-en="Mudra Yojana" data-hi="मुद्रा योजना">Mudra Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#stand-up-india" data-en="Stand Up India" data-hi="स्टैंड अप इंडिया">Stand Up India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#jeevan-jyoti" data-en="Jeevan Jyoti Bima" data-hi="जीवन ज्योति बीमा">Jeevan Jyoti Bima</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#suraksha-bima" data-en="Suraksha Bima Yojana" data-hi="सुरक्षा बीमा योजना">Suraksha Bima Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#atal-pension" data-en="Atal Pension Yojana" data-hi="अटल पेंशन योजना">Atal Pension Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#digital-saksharta" data-en="Digital Saksharta Abhiyan" data-hi="डिजिटल साक्षरता अभियान">Digital Saksharta Abhiyan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#rural-livelihood" data-en="National Rural Livelihood" data-hi="राष्ट्रीय ग्रामीण आजीविका">National Rural Livelihood</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#fasal-bima" data-en="Fasal Bima Yojana" data-hi="फसल बीमा योजना">Fasal Bima Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#swachh-bharat" data-en="Swachh Bharat Mission" data-hi="स्वच्छ भारत मिशन">Swachh Bharat Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#digital-india" data-en="Digital India" data-hi="डिजिटल इंडिया">Digital India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#startup-india" data-en="Startup India" data-hi="स्टार्टअप इंडिया">Startup India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#garib-kalyan" data-en="Garib Kalyan Yojana" data-hi="गरीब कल्याण योजना">Garib Kalyan Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#national-health" data-en="National Health Mission" data-hi="राष्ट्रीय स्वास्थ्य मिशन">National Health Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#krishi-sinchai" data-en="Krishi Sinchai Yojana" data-hi="कृषि सिंचाई योजना">Krishi Sinchai Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#matru-vandana" data-en="Matru Vandana Yojana" data-hi="मातृ वंदना योजना">Matru Vandana Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#shram-yogi" data-en="Shram Yogi Maan-dhan" data-hi="श्रम योगी मान-धन">Shram Yogi Maan-dhan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#kisan-maan-dhan" data-en="Kisan Maan Dhan" data-hi="किसान मान धन">Kisan Maan Dhan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#apprenticeship" data-en="Apprenticeship Scheme" data-hi="अप्रेंटिसशिप योजना">Apprenticeship Scheme</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#matsya-sampada" data-en="Matsya Sampada Yojana" data-hi="मत्स्य संपदा योजना">Matsya Sampada Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#one-nation-ration" data-en="One Nation One Ration" data-hi="वन नेशन वन राशन">One Nation One Ration</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#swanidhi" data-en="Swanidhi Yojana" data-hi="स्वनिधि योजना">Swanidhi Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#nrega" data-en="NREGA" data-hi="मनरेगा">NREGA</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#gram-sadak" data-en="Gram Sadak Yojana" data-hi="ग्राम सड़क योजना">Gram Sadak Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#jan-aushadhi" data-en="Jan Aushadhi Yojana" data-hi="जन औषधि योजना">Jan Aushadhi Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#sukanya" data-en="Sukanya Samriddhi" data-hi="सुकन्या समृद्धि">Sukanya Samriddhi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#vaya-vandana" data-en="Vaya Vandana Yojana" data-hi="वय वंदना योजना">Vaya Vandana Yojana</a></li>
                     </ul>
                 </li>
             </ul>
@@ -613,14 +614,43 @@
         </div>
     </section>
 
- 
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>60+</h3>
+                    <p data-en="Government Schemes" data-hi="सरकारी योजनाएं">Government Schemes</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2</h3>
+                    <p data-en="Languages Supported" data-hi="समर्थित भाषाएं">Languages Supported</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p data-en="Accessibility" data-hi="सुलभता">Accessibility</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p data-en="Free Service" data-hi="निःशुल्क सेवा">Free Service</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">सरकारी सहायक</div>
+                    <div class="footer-logo">
+                        <!-- Replace this placeholder with your actual logo -->
+                        <div class="logo-placeholder">SS</div>
+                        <!-- For your actual logo, use:
+                        <img src="https://your-actual-logo-url.com/logo.png" alt="Sarkari Sahayak Logo">
+                        -->
+                        <span>सरकारी सहायक</span>
+                    </div>
                     <p class="footer-about" data-en="Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives." 
                        data-hi="सरकारी योजनाओं और लाभों तक पहुंच में आपका विश्वसनीय साथी। हम नागरिकों और सरकारी पहलों के बीच की खाई को पाटते हैं।">
                        Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives.
@@ -718,6 +748,3 @@
     </script>
 </body>
 </html>
-
-
-

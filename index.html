@@ -1,1025 +1,1187 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" data-lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarkari Sahayak - Your Guide to Government Schemes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Sarkari - All Government Schemes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
+        
+        /* 1. Base Reset & Typography */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        :root {
-            --primary-color: #0a5bd3;
-            --secondary-color: #0848a6;
-            --accent-color: #ff6b35;
-            --light-color: #f8fafc;
-            --dark-color: #0a4bb3;
-            --text-color: #333;
-            --text-light: #666;
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            --border-radius: 12px;
-            --gradient: linear-gradient(135deg, #0a5bd3 0%, #0a4bb3 100%);
+        
+        html {
+            scroll-behavior: smooth;
         }
-
-        [data-theme="dark"] {
-            --primary-color: #0a5bd3;
-            --secondary-color: #0848a6;
-            --accent-color: #ff6b35;
-            --light-color: rgba(26, 26, 26, 0.85);
-            --dark-color: rgba(18, 18, 18, 0.9);
-            --text-color: #f5f5f5;
-            --text-light: #b0b0b0;
-            --bg-color: rgba(18, 18, 18, 0.85);
-            --card-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            --gradient: linear-gradient(135deg, #0a5bd3 0%, #0a4bb3 100%);
-        }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
-            color: var(--text-color);
-            background: var(--gradient), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover fixed;
-            background-blend-mode: overlay;
+            font-size: 16px;
             min-height: 100vh;
-            transition: all 0.3s ease;
         }
-
+        
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+        
+        /* 2. MARQUEE/DISCLAIMER BAR - SLOW SPEED */
+        .disclaimer-bar {
+            background: linear-gradient(90deg, #dc2626, #ef4444, #dc2626);
+            color: white;
+            padding: 12px 0;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            z-index: 1001;
+        }
+        
+        body.dark-mode .disclaimer-bar {
+            background: linear-gradient(90deg, #991b1b, #dc2626, #991b1b);
+        }
+        
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .marquee-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            animation: marquee 40s linear infinite; /* SLOW SPEED: 40 seconds */
+            padding-left: 100%; /* Start from right */
+        }
+        
+        .marquee-content i {
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Pause animation on hover */
+        .disclaimer-bar:hover .marquee-content {
+            animation-play-state: paused;
+        }
+        
+        /* 3. Container for responsive widths */
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Navigation - MATCHES schemes.html */
-        .navbar {
-            background: var(--primary-color);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+        
+        /* 4. Header & Navigation - Mobile First */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .nav-container {
+        
+        body.dark-mode header {
+            background: linear-gradient(135deg, #0f1a3d, #1a2f5c);
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
         }
-
-        .nav-logo {
+        
+        .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-
-        .nav-logo h2 {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
+        
+        .logo i {
+            font-size: 1.8rem;
+            color: #60a5fa;
         }
-
-        .nav-menu {
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        /* Right side buttons */
+        .header-right {
             display: flex;
-            list-style: none;
-            gap: 2rem;
             align-items: center;
+            gap: 15px;
         }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-link.active {
-            color: var(--accent-color);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-color);
-        }
-
-        .nav-link:hover {
-            color: var(--accent-color);
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            background: none;
+        
+        /* Language and Theme Toggle Buttons */
+        .toggle-btn {
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
-            font-family: inherit;
+            padding: 8px 15px;
+            border-radius: 50px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 0;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--card-bg);
-            min-width: 300px;
-            max-height: 500px;
-            overflow-y: auto;
-            box-shadow: var(--shadow);
-            border-radius: var(--border-radius);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
+            gap: 8px;
+            font-weight: 500;
             transition: all 0.3s ease;
-            list-style: none;
-            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            padding: 10px 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item a {
-            color: var(--text-color);
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .dropdown-item a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .lang-toggle, .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .lang-toggle:hover, .theme-toggle:hover {
+        
+        .toggle-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 80px;
-            color: white;
-            position: relative;
+        
+        .toggle-btn i {
+            font-size: 1rem;
         }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(10px);
-            background: rgba(248, 250, 252, 0.1);
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #fff, var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
+        
+        /* Mobile Navigation */
+        .nav-icon {
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent-color);
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-            border: none;
             cursor: pointer;
-            margin-right: 1rem;
+            display: none;
         }
-
-        .cta-button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
-        }
-
-        /* Popular Schemes Section - NEW */
-        .popular-schemes {
-            padding: 80px 0;
-            background: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(10px);
-        }
-
-        .schemes-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-            color: var(--text-color);
-            font-weight: 600;
-            position: relative;
-        }
-
-        .schemes-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .schemes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .scheme-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-top: 4px solid var(--accent-color);
-            position: relative;
-        }
-
-        .scheme-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
-        }
-
-        .scheme-header {
-            background: var(--gradient);
-            padding: 2rem;
-            color: white;
-            text-align: center;
-        }
-
-        .scheme-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .scheme-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .scheme-subtitle {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .scheme-body {
-            padding: 2rem;
-        }
-
-        .scheme-highlight {
-            background: var(--light-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .highlight-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .scheme-footer {
-            padding: 0 2rem 2rem;
+        
+        nav ul {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            list-style: none;
+            gap: 25px;
         }
-
-        .scheme-btn {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
+        
+        nav a {
+            color: white;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 100px 0;
-            background: var(--bg-color);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .stat-item {
+            font-weight: 500;
+            padding: 8px 0;
+            transition: all 0.3s ease;
             position: relative;
         }
-
-        .stat-item::before {
+        
+        nav a:hover {
+            color: #93c5fd;
+        }
+        
+        nav a::after {
             content: '';
             position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #93c5fd;
+            transition: width 0.3s ease;
         }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            display: block;
+        
+        nav a:hover::after {
+            width: 100%;
         }
-
-        .stat-label {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            font-weight: 500;
+        
+        /* 5. Hero Section - Responsive */
+        .hero {
+            background: linear-gradient(rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)), 
+                        url('https://images.unsplash.com/photo-1551135049-8a33b2fb2f5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
         }
-
-        /* Features Section */
-        .features {
-            padding: 120px 0;
-            background: rgba(248, 250, 252, 0.9);
+        
+        body.dark-mode .hero {
+            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 47, 92, 0.9)), 
+                        url('https://images.unsplash.com/photo-1551135049-8a33b2fb2f5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
         }
-
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #3b82f6;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 6. Scheme Categories Grid - Responsive */
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-            color: var(--text-color);
-            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            font-size: 2rem;
             position: relative;
+            padding-bottom: 15px;
         }
-
+        
+        body.dark-mode .section-title {
+            color: #93c5fd;
+        }
+        
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
             border-radius: 2px;
         }
-
-        .features-grid {
+        
+        .scheme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+            padding: 0 10px;
         }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 3rem 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 5px solid var(--accent-color);
-            position: relative;
+        
+        .scheme-card {
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
+        
+        body.dark-mode .scheme-card {
+            background: #1e293b;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
-        .feature-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        
+        .scheme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
+        
+        body.dark-mode .scheme-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .scheme-card:hover .card-img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h3 {
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        body.dark-mode .card-content h3 {
+            color: #93c5fd;
+        }
+        
+        .card-content p {
+            color: #64748b;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .card-content p {
+            color: #94a3b8;
+        }
+        
+        .card-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+        
+        .card-link:hover {
+            gap: 12px;
+            color: #1d4ed8;
+        }
+        
+        body.dark-mode .card-link {
+            color: #60a5fa;
+        }
+        
+        /* 7. Warning/Disclaimer Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.1);
+        }
+        
+        body.dark-mode .warning-box {
+            background: linear-gradient(135deg, #78350f, #92400e);
+            border-left: 5px solid #f59e0b;
+        }
+        
+        .warning-box h3 {
+            color: #92400e;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 8px 25px rgba(10, 91, 211, 0.3);
+            gap: 10px;
         }
-
-        .feature-card h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            font-weight: 600;
+        
+        body.dark-mode .warning-box h3 {
+            color: #fde68a;
         }
-
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.8;
+        
+        .warning-box p {
+            color: #92400e;
+            font-size: 0.95rem;
         }
-
-        /* Footer */
-        .footer {
-            background: rgba(10, 75, 179, 0.95);
-            color: white;
-            padding: 4rem 0 2rem;
-            backdrop-filter: blur(10px);
+        
+        body.dark-mode .warning-box p {
+            color: #fde68a;
         }
-
+        
+        /* 8. Features Section */
+        .features {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+        
+        body.dark-mode .features {
+            background-color: #1e293b;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .feature-item {
+            padding: 30px 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        body.dark-mode .feature-item h3 {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .feature-item p {
+            color: #94a3b8;
+        }
+        
+        /* 9. Footer */
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 50px 0 20px;
+        }
+        
+        body.dark-mode footer {
+            background-color: #0f172a;
+        }
+        
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, white, var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .footer-about {
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .footer-links h4, .footer-contact h4 {
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+        
+        .footer-logo h2 {
             color: white;
+            margin-bottom: 15px;
         }
-
+        
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
         .footer-links a {
-            display: block;
-            color: rgba(255,255,255,0.8);
+            color: #94a3b8;
             text-decoration: none;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: color 0.3s ease;
         }
-
+        
         .footer-links a:hover {
-            color: var(--accent-color);
-            transform: translateX(5px);
+            color: #60a5fa;
         }
-
+        
         .footer-contact p {
-            margin-bottom: 1rem;
-            opacity: 0.9;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icons a {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-icons a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
+        
+        .copyright {
             text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.8;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
+        
+        /* 10. Footer Disclaimer */
+        .footer-disclaimer {
+            background-color: #dc2626;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .footer-disclaimer {
+            background-color: #991b1b;
+        }
+        
+        /* ===== MEDIA QUERIES FOR RESPONSIVENESS ===== */
+        
+        /* Tablet Devices (768px and below) */
+        @media screen and (max-width: 768px) {
+            .hero h2 {
+                font-size: 1.8rem;
             }
             
-            .nav-menu {
-                gap: 1rem;
-                flex-wrap: wrap;
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            /* Hide text on buttons for mobile */
+            .toggle-btn span {
+                display: none;
+            }
+            
+            .toggle-btn {
+                padding: 10px;
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
                 justify-content: center;
             }
             
-            .hero-title {
-                font-size: 2.5rem;
+            /* Mobile Navigation */
+            .nav-icon {
+                display: block;
             }
             
-            .hero-subtitle {
-                font-size: 1.3rem;
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: #1e3c72;
+                padding: 20px;
+                transition: left 0.5s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
             }
             
-            .hero-content {
-                padding: 2rem;
+            body.dark-mode nav ul {
+                background-color: #0f1a3d;
             }
             
-            .schemes-grid {
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav li {
+                text-align: center;
+                margin: 15px 0;
+            }
+            
+            .scheme-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            /* Marquee adjustments for mobile - SLOWER */
+            .marquee-content {
+                animation: marquee 30s linear infinite; /* 40s se 30s for mobile */
+            }
+        }
+        
+        /* Mobile Devices (480px and below) */
+        @media screen and (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero {
+                padding: 60px 15px;
+            }
+            
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .scheme-grid {
                 grid-template-columns: 1fr;
+                padding: 0;
             }
             
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+            .card-img {
+                height: 160px;
             }
             
-            .features-grid {
+            .feature-grid {
                 grid-template-columns: 1fr;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 30px;
             }
             
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: transparent;
-                max-height: 400px;
+            /* Adjust header buttons spacing */
+            .header-right {
+                gap: 10px;
             }
-
-            .scheme-footer {
-                flex-direction: column;
+            
+            /* Marquee adjustments for small mobile - SLOWER */
+            .disclaimer-bar {
+                font-size: 0.9rem;
+                padding: 10px 0;
+            }
+            
+            .marquee-content {
+                gap: 15px;
+                animation: marquee 25s linear infinite; /* 40s se 25s for small mobile */
+            }
+            
+            .marquee-content i {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Small Mobile Devices (360px and below) */
+        @media screen and (max-width: 360px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .card-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .toggle-btn {
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+            }
+            
+            .disclaimer-bar {
+                font-size: 0.85rem;
+            }
+            
+            .marquee-content {
+                animation: marquee 20s linear infinite; /* 40s se 20s for very small mobile */
+            }
+        }
+        
+        /* Print Styles - Hide marquee when printing */
+        @media print {
+            .disclaimer-bar, .footer-disclaimer {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
-                <h2 data-en="Sarkari Sahayak" data-hi="सरकारी सहायक">Sarkari Sahayak</h2>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link active" data-en="Home" data-hi="होम">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle active" data-en="Schemes" data-hi="योजनाएं">
-                        Schemes <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="schemes.html#employment-linked" data-en="Employment Linked Incentive" data-hi="रोजगार लिंक्ड प्रोत्साहन">Employment Linked Incentive</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#pm-internship" data-en="PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना">PM Internship Scheme</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#surya-ghar" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#vishwakarma" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">PM Vishwakarma Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#pm-awas" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#ayushman-bharat" data-en="Ayushman Bharat Yojana" data-hi="आयुष्मान भारत योजना">Ayushman Bharat Yojana</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="nav-controls">
-                <button class="lang-toggle" onclick="toggleLanguage()">
-                    <span class="lang-text" data-en="हिंदी" data-hi="English">हिंदी</span>
-                </button>
-                <button class="theme-toggle" onclick="toggleTheme()">
-                    <span class="theme-icon">🌙</span>
-                </button>
+    <!-- 1. DISCLAIMER MARQUEE - SLOW SPEED -->
+    <div class="disclaimer-bar">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="disclaimerText">DISCLAIMER: This is NOT an official Government website. This is a private information portal for educational purposes only.</span>
+                <i class="fas fa-exclamation-triangle"></i>
+                <!-- Duplicate content for continuous effect -->
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>DISCLAIMER: This is NOT an official Government website. This is a private information portal for educational purposes only.</span>
+                <i class="fas fa-exclamation-triangle"></i>
             </div>
         </div>
-    </nav>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-landmark"></i>
+                <h1>Sarkari Schemes Portal</h1>
+            </div>
+            
+            <!-- Right side: Language + Theme Toggle + Menu -->
+            <div class="header-right">
+                <!-- Language Toggle Button -->
+                <button class="toggle-btn" id="langToggle">
+                    <i class="fas fa-language"></i>
+                    <span>English</span>
+                </button>
+                
+                <!-- Dark/Light Mode Toggle -->
+                <button class="toggle-btn" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="nav-icon" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="schemes.html"><i class="fas fa-list-alt"></i> All Schemes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-en="Welcome to Sarkari Sahayak" data-hi="सरकारी सहायक में आपका स्वागत है">
-                    Welcome to Sarkari Sahayak
-                </h1>
-                <p class="hero-subtitle" data-en="Your Gateway to Government Schemes" data-hi="सरकारी योजनाओं का आपका गेटवे">
-                    Your Gateway to Government Schemes
-                </p>
-                <p class="hero-description" data-en="Discover, understand, and apply for 60+ government schemes with ease. Get personalized recommendations and step-by-step application guidance in Hindi & English."
-                   data-hi="60+ सरकारी योजनाओं को आसानी से खोजें, समझें और आवेदन करें। हिंदी और अंग्रेजी में व्यक्तिगत सिफारिशें और चरण-दर-चरण आवेदन मार्गदर्शन प्राप्त करें।">
-                    Discover, understand, and apply for 60+ government schemes with ease. Get personalized recommendations and step-by-step application guidance in Hindi & English.
-                </p>
-                <a href="schemes.html" class="cta-button" data-en="Explore All Schemes" data-hi="सभी योजनाएं देखें">
-                    <i class="fas fa-search"></i>
-                    <span>Explore All Schemes</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#popular-schemes" class="cta-button" style="background: var(--secondary-color); box-shadow: 0 8px 25px rgba(8, 72, 166, 0.3);" data-en="View Popular Schemes" data-hi="लोकप्रिय योजनाएं देखें">
-                    <i class="fas fa-star"></i>
-                    <span>View Popular Schemes</span>
-                </a>
-            </div>
+        <div class="hero-content">
+            <h2 id="heroTitle">All Government Schemes in One Place</h2>
+            <p id="heroDescription">Find, compare, and apply for hundreds of Central and State Government schemes. Simplified information in your language.</p>
+            <a href="schemes.html" class="cta-button" id="ctaText">Explore All Schemes <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- Popular Schemes Section -->
-    <section class="popular-schemes" id="popular-schemes">
-        <div class="container">
-            <h2 class="schemes-title" data-en="Popular Schemes" data-hi="लोकप्रिय योजनाएं">
-                Popular Schemes
-            </h2>
-            <div class="schemes-grid">
-                <!-- PM Awas Yojana -->
-                <div class="scheme-card">
-                    <div class="scheme-header">
-                        <div class="scheme-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="scheme-title" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</div>
-                        <div class="scheme-subtitle" data-en="Affordable Housing for All" data-hi="सभी के लिए किफायती आवास">Affordable Housing for All</div>
-                    </div>
-                    <div class="scheme-body">
-                        <div class="scheme-highlight">
-                            <div class="highlight-title" data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</div>
-                            <p data-en="₹2.5 Lakh subsidy for home loans up to ₹35 Lakh" data-hi="₹35 लाख तक के होम लोन पर ₹2.5 लाख सब्सिडी">₹2.5 Lakh subsidy for home loans up to ₹35 Lakh</p>
-                        </div>
-                        <p data-en="Interest subsidy on home loans for urban and rural poor" data-hi="शहरी और ग्रामीण गरीबों के लिए होम लोन पर ब्याज सब्सिडी">Interest subsidy on home loans for urban and rural poor</p>
-                    </div>
-                    <div class="scheme-footer">
-                        <a href="#" class="scheme-btn btn-primary" data-en="Check Eligibility" data-hi="पात्रता जांचें">
-                            <i class="fas fa-check-circle"></i> Check Eligibility
-                        </a>
-                        <a href="#" class="scheme-btn btn-secondary" data-en="Learn More" data-hi="जानकारी">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
-                    </div>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Warning/Disclaimer Box -->
+        <div class="warning-box">
+            <h3><i class="fas fa-exclamation-circle"></i> Important Notice</h3>
+            <p id="warningText">This website is an independent information portal and is NOT affiliated with any government department. All information is collected from publicly available sources. For official information and applications, please visit the respective government portals.</p>
+        </div>
+        
+        <h2 class="section-title" id="categoryTitle">Popular Scheme Categories</h2>
+        
+        <div class="scheme-grid">
+            <!-- Card 1 -->
+            <div class="scheme-card">
+                <img src="data:image/webp;base64,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" 
+                     alt="Farmer with crops" class="card-img">
+                <div class="card-content">
+                    <h3 id="card1Title">Farmer Schemes</h3>
+                    <p id="card1Desc">PM-KISAN, Crop Insurance, Subsidies, Loan Waivers and other agricultural support programs.</p>
+                    <a href="schemes.html#farmers" class="card-link" id="card1Link">View Schemes <i class="fas fa-chevron-right"></i></a>
                 </div>
-
-                <!-- Ayushman Bharat -->
-                <div class="scheme-card">
-                    <div class="scheme-header">
-                        <div class="scheme-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="scheme-title" data-en="Ayushman Bharat" data-hi="आयुष्मान भारत">Ayushman Bharat</div>
-                        <div class="scheme-subtitle" data-en="Health for All" data-hi="सभी के लिए स्वास्थ्य">Health for All</div>
-                    </div>
-                    <div class="scheme-body">
-                        <div class="scheme-highlight">
-                            <div class="highlight-title" data-en="Coverage" data-hi="कवरेज">Coverage</div>
-                            <p data-en="₹5 Lakh per family per year for secondary & tertiary care" data-hi="द्वितीयक और तृतीयक देखभाल के लिए प्रति परिवार प्रति वर्ष ₹5 लाख">₹5 Lakh per family per year for secondary & tertiary care</p>
-                        </div>
-                        <p data-en="Covers 10 crore poor families with free hospitalization" data-hi="10 करोड़ गरीब परिवारों को मुफ्त अस्पताल में भर्ती कवरेज">Covers 10 crore poor families with free hospitalization</p>
-                    </div>
-                    <div class="scheme-footer">
-                        <a href="#" class="scheme-btn btn-primary" data-en="Get Card" data-hi="कार्ड प्राप्त करें">
-                            <i class="fas fa-card"></i> Get Card
-                        </a>
-                        <a href="#" class="scheme-btn btn-secondary" data-en="Details" data-hi="विवरण">
-                            <i class="fas fa-list"></i> Details
-                        </a>
-                    </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="scheme-card">
+                <img src="data:image/webp;base64,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" 
+                     alt="Students studying" class="card-img">
+                <div class="card-content">
+                    <h3 id="card2Title">Education & Scholarships</h3>
+                    <p id="card2Desc">Scholarships for all levels, student loans, skill development programs and educational grants.</p>
+                    <a href="schemes.html#education" class="card-link" id="card2Link">View Schemes <i class="fas fa-chevron-right"></i></a>
                 </div>
-
-                <!-- PM Vishwakarma -->
-                <div class="scheme-card">
-                    <div class="scheme-header">
-                        <div class="scheme-icon">
-                            <i class="fas fa-hammer"></i>
-                        </div>
-                        <div class="scheme-title" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">PM Vishwakarma Yojana</div>
-                        <div class="scheme-subtitle" data-en="Artisans Empowerment" data-hi="कारीगरों का सशक्तिकरण">Artisans Empowerment</div>
-                    </div>
-                    <div class="scheme-body">
-                        <div class="scheme-highlight">
-                            <div class="highlight-title" data-en="Support" data-hi="सहायता">Support</div>
-                            <p data-en="₹1-3 Lakh collateral-free loans at 5% interest" data-hi="5% ब्याज पर ₹1-3 लाख बिना गारंटी ऋण">₹1-3 Lakh collateral-free loans at 5% interest</p>
-                        </div>
-                        <p data-en="Skill training, toolkit, credit & market linkage for artisans" data-hi="कारीगरों के लिए कौशल प्रशिक्षण, टूलकिट, ऋण और बाजार संपर्क">Skill training, toolkit, credit & market linkage for artisans</p>
-                    </div>
-                    <div class="scheme-footer">
-                        <a href="#" class="scheme-btn btn-primary" data-en="Apply Now" data-hi="अभी आवेदन करें">
-                            <i class="fas fa-file-alt"></i> Apply Now
-                        </a>
-                        <a href="#" class="scheme-btn btn-secondary" data-en="Eligibility" data-hi="पात्रता">
-                            <i class="fas fa-users"></i> Eligibility
-                        </a>
-                    </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="scheme-card">
+                <img src="https://www.bing.com/ck/a?!&&p=113760004bbff04e966e4f9906724738958e2e2caaf2fc38973dd13c799efc2bJmltdHM9MTc2Nzc0NDAwMA&ptn=3&ver=2&hsh=4&fclid=328d8274-1bd9-6b9d-28a2-94b31ad46a7b&u=a1L2ltYWdlcy9zZWFyY2g_cT13b21lbitlbXBvd2VybWVudCZpZD00OEJGNTUxQUVCNzY5NjJGRkJDQjk1RTJDODgyNUY2ODE1N0RCQUMxJkZPUk09SVFGUkJB" 
+                     alt="Medical professionals" class="card-img">
+                <div class="card-content">
+                    <h3 id="card3Title">Health & Insurance</h3>
+                    <p id="card3Desc">Ayushman Bharat, PMJAY, Health Insurance, Medicine subsidies and wellness programs.</p>
+                    <a href="schemes.html#health" class="card-link" id="card3Link">View Schemes <i class="fas fa-chevron-right"></i></a>
                 </div>
-
-                <!-- Surya Ghar -->
-                <div class="scheme-card">
-                    <div class="scheme-header">
-                        <div class="scheme-icon">
-                            <i class="fas fa-solar-panel"></i>
-                        </div>
-                        <div class="scheme-title" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</div>
-                        <div class="scheme-subtitle" data-en="Free Solar Electricity" data-hi="मुफ्त सौर बिजली">Free Solar Electricity</div>
-                    </div>
-                    <div class="scheme-body">
-                        <div class="scheme-highlight">
-                            <div class="highlight-title" data-en="Benefit" data-hi="लाभ">Benefit</div>
-                            <p data-en="300 units free electricity per month via rooftop solar" data-hi="रूफटॉप सोलर के माध्यम से 300 यूनिट मुफ्त बिजली प्रति माह">300 units free electricity per month via rooftop solar</p>
-                        </div>
-                        <p data-en="Central financial assistance for solar panel installation" data-hi="सौर पैनल स्थापना के लिए केंद्रीय वित्तीय सहायता">Central financial assistance for solar panel installation</p>
-                    </div>
-                    <div class="scheme-footer">
-                        <a href="#" class="scheme-btn btn-primary" data-en="Install Solar" data-hi="सोलर लगवाएं">
-                            <i class="fas fa-solar-panel"></i> Install Solar
-                        </a>
-                        <a href="#" class="scheme-btn btn-secondary" data-en="Apply" data-hi="आवेदन">
-                            <i class="fas fa-edit"></i> Apply
-                        </a>
-                    </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab3d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Women entrepreneurs" class="card-img">
+                <div class="card-content">
+                    <h3 id="card4Title">Women Empowerment</h3>
+                    <p id="card4Desc">Schemes for women entrepreneurs, maternity benefits, safety, education and skill development.</p>
+                    <a href="schemes.html#women" class="card-link" id="card4Link">View Schemes <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Business meeting" class="card-img">
+                <div class="card-content">
+                    <h3 id="card5Title">Business & Startup</h3>
+                    <p id="card5Desc">MUDRA Loans, Startup India, MSME support, Credit Guarantee schemes and subsidies.</p>
+                    <a href="schemes.html#business" class="card-link" id="card5Link">View Schemes <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Senior citizens" class="card-img">
+                <div class="card-content">
+                    <h3 id="card6Title">Senior Citizens</h3>
+                    <p id="card6Desc">Pension schemes, health insurance, travel concessions, and welfare programs for elderly.</p>
+                    <a href="schemes.html#senior" class="card-link" id="card6Link">View Schemes <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number" data-en="60+" data-hi="60+">60+</span>
-                    <span class="stat-label" data-en="Government Schemes" data-hi="सरकारी योजनाएं">Government Schemes</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-en="1M+" data-hi="10 लाख+">1M+</span>
-                    <span class="stat-label" data-en="Happy Users" data-hi="खुश उपयोगकर्ता">Happy Users</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-en="100%" data-hi="100%">100%</span>
-                    <span class="stat-label" data-en="Free to Use" data-hi="निःशुल्क उपयोग">Free to Use</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-en="2X" data-hi="2X">2X</span>
-                    <span class="stat-label" data-en="Faster Applications" data-hi="तेज आवेदन">Faster Applications</span>
+        
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title" id="featuresTitle">Why Use Sarkari Portal?</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 id="feature1Title">Verified Information</h3>
+                        <p id="feature1Desc">All schemes verified from official government sources with latest updates.</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 id="feature2Title">Multi-Language</h3>
+                        <p id="feature2Desc">Available in Hindi, English and regional languages for better understanding.</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 id="feature3Title">Mobile Friendly</h3>
+                        <p id="feature3Desc">Access all schemes on any device - mobile, tablet or desktop.</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3 id="feature4Title">Direct Application Links</h3>
+                        <p id="feature4Desc">Direct links to official portals for easy application process.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title" data-en="Why Choose Sarkari Sahayak?" data-hi="सरकारी सहायक क्यों चुनें?">
-                Why Choose Sarkari Sahayak?
-            </h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 data-en="Complete Coverage" data-hi="पूर्ण कवरेज">Complete Coverage</h3>
-                    <p data-en="All 60+ central & state schemes with eligibility, documents & direct apply links" data-hi="पात्रता, दस्तावेज और सीधे आवेदन लिंक के साथ 60+ केंद्र और राज्य योजनाएं">
-                        All 60+ central & state schemes with eligibility, documents & direct apply links
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 data-en="Bilingual Support" data-hi="द्विभाषी समर्थन">Bilingual Support</h3>
-                    <p data-en="Hindi & English explanations with one-click language toggle for all content" data-hi="सभी सामग्री के लिए एक-क्लिक भाषा टॉगल के साथ हिंदी और अंग्रेजी स्पष्टीकरण">
-                        Hindi & English explanations with one-click language toggle for all content
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-filter"></i>
-                    </div>
-                    <h3 data-en="Smart Filtering" data-hi="स्मार्ट फिल्टरिंग">Smart Filtering</h3>
-                    <p data-en="Filter by category, status (new/popular), search by benefits & eligibility criteria" data-hi="श्रेणी, स्थिति (नई/लोकप्रिय) द्वारा फिल्टर करें, लाभ और पात्रता मानदंड द्वारा खोजें">
-                        Filter by category, status (new/popular), search by benefits & eligibility criteria
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo" data-en="Sarkari Sahayak" data-hi="सरकारी सहायक">Sarkari Sahayak</div>
-                    <p data-en="India's most trusted government schemes portal. Making welfare accessible to every citizen with simple, accurate information in their native language."
-                       data-hi="भारत का सबसे विश्वसनीय सरकारी योजनाएं पोर्टल। उनकी मातृभाषा में सरल, सटीक जानकारी के साथ हर नागरिक के लिए कल्याण को सुलभ बनाना।">
-                        India's most trusted government schemes portal. Making welfare accessible to every citizen with simple, accurate information in their native language.
-                    </p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+                <div class="footer-logo">
+                    <h2>Sarkari Schemes Portal</h2>
+                    <p id="footerDesc">Your one-stop destination for all government schemes and benefits.</p>
                 </div>
+                
                 <div class="footer-links">
-                    <h4 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h4>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i><span data-en="Home" data-hi="होम">Home</span></a>
-                    <a href="schemes.html"><i class="fas fa-chevron-right"></i><span data-en="All Schemes" data-hi="सभी योजनाएं">All Schemes</span></a>
-                    <a href="#"><i class="fas fa-chevron-right"></i><span data-en="Eligibility Check" data-hi="पात्रता जांच">Eligibility Check</span></a>
-                    <a href="#"><i class="fas fa-chevron-right"></i><span data-en="Application Guide" data-hi="आवेदन गाइड">Application Guide</span></a>
+                    <h3 id="quickLinksTitle">Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="schemes.html" id="allSchemesLink">All Schemes</a></li>
+                    </ul>
                 </div>
+                
                 <div class="footer-contact">
-                    <h4 data-en="Contact Info" data-hi="संपर्क जानकारी">Contact Info</h4>
-                    <p><i class="fas fa-envelope"></i> pr7353@vidyagyan.in</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Varanasi, Uttar Pradesh</p>
-                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                    <h3 id="contactTitle">Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> contact@vidyagyan.in</p>
+                    <p><i class="fas fa-phone"></i> Toll Free: 1800-XXX-XXXX</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Delhi, Ghaziabad</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p data-en="© 2026 Sarkari Sahayak. All rights reserved." data-hi="© 2026 सरकारी सहायक। सर्वाधिकार सुरक्षित।">
-                    © 2026 Sarkari Sahayak. All rights reserved.
-                </p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;" data-en="Official information platform. Visit respective government websites for applications."
-                   data-hi="आधिकारिक सूचना मंच। आवेदन के लिए संबंधित सरकारी वेबसाइट पर जाएं।">
-                    Official information platform. Visit respective government websites for applications.
-                </p>
+            
+            <!-- Footer Disclaimer -->
+            <div class="footer-disclaimer" id="footerDisclaimer">
+                <strong>Note:</strong> This is an independent information portal. We are not associated with any government department. All trademarks and logos belong to their respective owners.
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sarkari Schemes Portal. All rights reserved. | This is a demo website for informational purposes.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript for Toggles -->
     <script>
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            
-            const themeIcon = document.querySelector('.theme-icon');
-            themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
-            localStorage.setItem('theme', newTheme);
-        }
-
-        function toggleLanguage() {
-            const currentLang = document.documentElement.getAttribute('data-lang');
-            const newLang = currentLang === 'en' ? 'hi' : 'en';
-            document.documentElement.setAttribute('data-lang', newLang);
-            
-            document.querySelectorAll('[data-en][data-hi]').forEach(element => {
-                element.textContent = element.getAttribute(`data-${newLang}`);
-            });
-            
-            const langText = document.querySelector('.lang-text');
-            langText.textContent = newLang === 'en' ? 'हिंदी' : 'English';
-            localStorage.setItem('language', newLang);
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            const savedLang = localStorage.getItem('language') || 'en';
+            // Elements
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const themeToggle = document.getElementById('themeToggle');
+            const langToggle = document.getElementById('langToggle');
+            const body = document.body;
+            const marqueeContent = document.querySelector('.marquee-content');
             
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            document.documentElement.setAttribute('data-lang', savedLang);
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            const savedLang = localStorage.getItem('language') || 'english';
             
-            const themeIcon = document.querySelector('.theme-icon');
-            themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+            // Apply saved theme
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                updateThemeIcon(true);
+            }
             
-            document.querySelectorAll('[data-en][data-hi]').forEach(element => {
-                element.textContent = element.getAttribute(`data-${savedLang}`);
+            // Apply saved language
+            if (savedLang === 'hindi') {
+                switchToHindi();
+                updateLangButton(true);
+            }
+            
+            // Mobile Navigation Toggle
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // Change icon
+                const icon = navToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             });
             
-            const langText = document.querySelector('.lang-text');
-            langText.textContent = savedLang === 'en' ? 'हिंदी' : 'English';
+            // Close menu when clicking on a link (for mobile)
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Theme Toggle Functionality
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                
+                // Update icon and text
+                const isDarkMode = body.classList.contains('dark-mode');
+                updateThemeIcon(isDarkMode);
+                
+                // Save preference to localStorage
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
+            
+            // Language Toggle Functionality
+            langToggle.addEventListener('click', function() {
+                const currentLang = localStorage.getItem('language') || 'english';
+                
+                if (currentLang === 'english') {
+                    switchToHindi();
+                    localStorage.setItem('language', 'hindi');
+                    updateLangButton(true);
+                } else {
+                    switchToEnglish();
+                    localStorage.setItem('language', 'english');
+                    updateLangButton(false);
+                }
+            });
+            
+            // Function to update theme icon and text
+            function updateThemeIcon(isDarkMode) {
+                const icon = themeToggle.querySelector('i');
+                const text = themeToggle.querySelector('span');
+                
+                if (isDarkMode) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    text.textContent = 'Light';
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    text.textContent = 'Dark';
+                }
+            }
+            
+            // Function to update language button
+            function updateLangButton(isHindi) {
+                const icon = langToggle.querySelector('i');
+                const text = langToggle.querySelector('span');
+                
+                if (isHindi) {
+                    icon.classList.remove('fa-language');
+                    icon.classList.add('fa-font');
+                    text.textContent = 'हिंदी';
+                } else {
+                    icon.classList.remove('fa-font');
+                    icon.classList.add('fa-language');
+                    text.textContent = 'English';
+                }
+            }
+            
+            // Function to switch to Hindi
+            function switchToHindi() {
+                // Update disclaimer marquee
+                const hindiDisclaimer = 'डिस्क्लेमर: यह एक आधिकारिक सरकारी वेबसाइट नहीं है। यह केवल शैक्षिक उद्देश्यों के लिए एक निजी सूचना पोर्टल है।';
+                document.getElementById('disclaimerText').textContent = hindiDisclaimer;
+                
+                // Update marquee content
+                const marqueeItems = marqueeContent.querySelectorAll('span');
+                marqueeItems.forEach(item => {
+                    if (item.textContent.includes('DISCLAIMER')) {
+                        item.textContent = hindiDisclaimer;
+                    }
+                });
+                
+                // Update main content
+                document.getElementById('heroTitle').textContent = 'सभी सरकारी योजनाएं एक जगह पर';
+                document.getElementById('heroDescription').textContent = 'केंद्र और राज्य सरकार की सैकड़ों योजनाओं को खोजें, तुलना करें और आवेदन करें। आपकी भाषा में सरल जानकारी।';
+                document.getElementById('ctaText').innerHTML = 'सभी योजनाएं देखें <i class="fas fa-arrow-right"></i>';
+                
+                // Update warning box
+                document.getElementById('warningText').textContent = 'यह वेबसाइट एक स्वतंत्र सूचना पोर्टल है और किसी भी सरकारी विभाग से संबद्ध नहीं है। सभी जानकारी सार्वजनिक रूप से उपलब्ध स्रोतों से एकत्र की गई है। आधिकारिक जानकारी और आवेदनों के लिए, कृपया संबंधित सरकारी पोर्टल पर जाएं।';
+                
+                document.getElementById('categoryTitle').textContent = 'लोकप्रिय योजना श्रेणियाँ';
+                
+                // Update card titles and descriptions
+                document.getElementById('card1Title').textContent = 'किसान योजनाएं';
+                document.getElementById('card1Desc').textContent = 'पीएम-किसान, फसल बीमा, सब्सिडी, ऋण माफी और अन्य कृषि सहायता कार्यक्रम।';
+                document.getElementById('card1Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card2Title').textContent = 'शिक्षा और छात्रवृत्ति';
+                document.getElementById('card2Desc').textContent = 'सभी स्तरों के लिए छात्रवृत्ति, छात्र ऋण, कौशल विकास कार्यक्रम और शैक्षिक अनुदान।';
+                document.getElementById('card2Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card3Title').textContent = 'स्वास्थ्य और बीमा';
+                document.getElementById('card3Desc').textContent = 'आयुष्मान भारत, पीएमजेएवाई, स्वास्थ्य बीमा, दवा सब्सिडी और कल्याणकारी कार्यक्रम।';
+                document.getElementById('card3Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card4Title').textContent = 'महिला सशक्तिकरण';
+                document.getElementById('card4Desc').textContent = 'महिला उद्यमियों के लिए योजनाएं, मातृत्व लाभ, सुरक्षा, शिक्षा और कौशल विकास।';
+                document.getElementById('card4Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card5Title').textContent = 'व्यवसाय और स्टार्टअप';
+                document.getElementById('card5Desc').textContent = 'मुद्रा लोन, स्टार्टअप इंडिया, एमएसएमई सहायता, क्रेडिट गारंटी योजनाएं और सब्सिडी।';
+                document.getElementById('card5Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card6Title').textContent = 'वरिष्ठ नागरिक';
+                document.getElementById('card6Desc').textContent = 'पेंशन योजनाएं, स्वास्थ्य बीमा, यात्रा रियायतें, और वरिष्ठ नागरिकों के लिए कल्याणकारी कार्यक्रम।';
+                document.getElementById('card6Link').innerHTML = 'योजनाएं देखें <i class="fas fa-chevron-right"></i>';
+                
+                // Update features section
+                document.getElementById('featuresTitle').textContent = 'सरकारी पोर्टल क्यों उपयोग करें?';
+                document.getElementById('feature1Title').textContent = 'सत्यापित जानकारी';
+                document.getElementById('feature1Desc').textContent = 'सभी योजनाएं सरकारी स्रोतों से सत्यापित, नवीनतम अपडेट के साथ।';
+                document.getElementById('feature2Title').textContent = 'बहु-भाषा';
+                document.getElementById('feature2Desc').textContent = 'हिंदी, अंग्रेजी और क्षेत्रीय भाषाओं में उपलब्ध, बेहतर समझ के लिए।';
+                document.getElementById('feature3Title').textContent = 'मोबाइल अनुकूल';
+                document.getElementById('feature3Desc').textContent = 'किसी भी डिवाइस पर पहुंचें - मोबाइल, टैबलेट या डेस्कटॉप।';
+                document.getElementById('feature4Title').textContent = 'सीधे आवेदन लिंक';
+                document.getElementById('feature4Desc').textContent = 'आसान आवेदन प्रक्रिया के लिए आधिकारिक पोर्टल के सीधे लिंक।';
+                
+                // Update footer
+                document.getElementById('footerDesc').textContent = 'सभी सरकारी योजनाओं और लाभों के लिए आपकी एकमात्र डेस्टिनेशन।';
+                document.getElementById('quickLinksTitle').textContent = 'त्वरित लिंक';
+                document.getElementById('allSchemesLink').textContent = 'सभी योजनाएं';
+                document.getElementById('contactTitle').textContent = 'संपर्क जानकारी';
+                document.getElementById('footerDisclaimer').innerHTML = '<strong>नोट:</strong> यह एक स्वतंत्र सूचना पोर्टल है। हम किसी भी सरकारी विभाग से संबद्ध नहीं हैं। सभी ट्रेडमार्क और लोगो उनके संबंधित मालिकों के हैं।';
+            }
+            
+            // Function to switch to English
+            function switchToEnglish() {
+                // Update disclaimer marquee
+                const englishDisclaimer = 'DISCLAIMER: This is NOT an official Government website. This is a private information portal for educational purposes only.';
+                document.getElementById('disclaimerText').textContent = englishDisclaimer;
+                
+                // Update marquee content
+                const marqueeItems = marqueeContent.querySelectorAll('span');
+                marqueeItems.forEach(item => {
+                    if (item.textContent.includes('डिस्क्लेमर') || item.textContent.includes('DISCLAIMER')) {
+                        item.textContent = englishDisclaimer;
+                    }
+                });
+                
+                // Update main content
+                document.getElementById('heroTitle').textContent = 'All Government Schemes in One Place';
+                document.getElementById('heroDescription').textContent = 'Find, compare, and apply for hundreds of Central and State Government schemes. Simplified information in your language.';
+                document.getElementById('ctaText').innerHTML = 'Explore All Schemes <i class="fas fa-arrow-right"></i>';
+                
+                // Update warning box
+                document.getElementById('warningText').textContent = 'This website is an independent information portal and is NOT affiliated with any government department. All information is collected from publicly available sources. For official information and applications, please visit the respective government portals.';
+                
+                document.getElementById('categoryTitle').textContent = 'Popular Scheme Categories';
+                
+                // Update card titles and descriptions
+                document.getElementById('card1Title').textContent = 'Farmer Schemes';
+                document.getElementById('card1Desc').textContent = 'PM-KISAN, Crop Insurance, Subsidies, Loan Waivers and other agricultural support programs.';
+                document.getElementById('card1Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card2Title').textContent = 'Education & Scholarships';
+                document.getElementById('card2Desc').textContent = 'Scholarships for all levels, student loans, skill development programs and educational grants.';
+                document.getElementById('card2Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card3Title').textContent = 'Health & Insurance';
+                document.getElementById('card3Desc').textContent = 'Ayushman Bharat, PMJAY, Health Insurance, Medicine subsidies and wellness programs.';
+                document.getElementById('card3Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card4Title').textContent = 'Women Empowerment';
+                document.getElementById('card4Desc').textContent = 'Schemes for women entrepreneurs, maternity benefits, safety, education and skill development.';
+                document.getElementById('card4Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card5Title').textContent = 'Business & Startup';
+                document.getElementById('card5Desc').textContent = 'MUDRA Loans, Startup India, MSME support, Credit Guarantee schemes and subsidies.';
+                document.getElementById('card5Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                document.getElementById('card6Title').textContent = 'Senior Citizens';
+                document.getElementById('card6Desc').textContent = 'Pension schemes, health insurance, travel concessions, and welfare programs for elderly.';
+                document.getElementById('card6Link').innerHTML = 'View Schemes <i class="fas fa-chevron-right"></i>';
+                
+                // Update features section
+                document.getElementById('featuresTitle').textContent = 'Why Use Sarkari Portal?';
+                document.getElementById('feature1Title').textContent = 'Verified Information';
+                document.getElementById('feature1Desc').textContent = 'All schemes verified from official government sources with latest updates.';
+                document.getElementById('feature2Title').textContent = 'Multi-Language';
+                document.getElementById('feature2Desc').textContent = 'Available in Hindi, English and regional languages for better understanding.';
+                document.getElementById('feature3Title').textContent = 'Mobile Friendly';
+                document.getElementById('feature3Desc').textContent = 'Access all schemes on any device - mobile, tablet or desktop.';
+                document.getElementById('feature4Title').textContent = 'Direct Application Links';
+                document.getElementById('feature4Desc').textContent = 'Direct links to official portals for easy application process.';
+                
+                // Update footer
+                document.getElementById('footerDesc').textContent = 'Your one-stop destination for all government schemes and benefits.';
+                document.getElementById('quickLinksTitle').textContent = 'Quick Links';
+                document.getElementById('allSchemesLink').textContent = 'All Schemes';
+                document.getElementById('contactTitle').textContent = 'Contact Info';
+                document.getElementById('footerDisclaimer').innerHTML = '<strong>Note:</strong> This is an independent information portal. We are not associated with any government department. All trademarks and logos belong to their respective owners.';
+            }
+            
+            // Close menu when clicking outside (for mobile)
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target) || navToggle.contains(event.target);
+                
+                if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = navToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
     </script>
 </body>

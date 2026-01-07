@@ -73,7 +73,7 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
+        /* Navigation - MODIFIED CSS ONLY */
         .navbar {
             background: var(--primary-color);
             padding: 1rem 0;
@@ -111,7 +111,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem; /* CHANGED: Reduced from 2rem to 1rem */
             align-items: center;
         }
 
@@ -121,6 +121,8 @@
             transition: color 0.3s;
             font-weight: 500;
             position: relative;
+            font-size: 0.95rem; /* CHANGED: Slightly smaller font */
+            padding: 8px 12px; /* CHANGED: Reduced padding */
         }
 
         .nav-link.active {
@@ -141,7 +143,7 @@
             color: var(--accent-color);
         }
 
-        /* Dropdown Styles */
+        /* Dropdown Styles - MODIFIED */
         .dropdown {
             position: relative;
         }
@@ -151,12 +153,13 @@
             border: none;
             color: white;
             font-family: inherit;
-            font-size: inherit;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 0;
+            padding: 8px 12px; /* CHANGED: Reduced padding */
+            font-size: 0.95rem; /* CHANGED: Smaller font */
+            font-weight: 500;
         }
 
         .dropdown-menu {
@@ -164,7 +167,7 @@
             top: 100%;
             left: 0;
             background: var(--card-bg);
-            min-width: 300px;
+            min-width: 250px; /* CHANGED: Reduced from 300px to 250px */
             max-height: 500px;
             overflow-y: auto;
             box-shadow: var(--shadow);
@@ -184,7 +187,7 @@
         }
 
         .dropdown-item {
-            padding: 10px 15px;
+            padding: 8px 12px; /* CHANGED: Reduced padding */
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -197,17 +200,22 @@
             text-decoration: none;
             display: block;
             transition: color 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* CHANGED: Smaller font */
         }
 
         .dropdown-item a:hover {
             color: var(--accent-color);
         }
 
+        /* Language and Theme Controls - MODIFIED */
         .nav-controls {
             display: flex;
             gap: 1rem;
             align-items: center;
+            margin-left: 0; /* CHANGED: Reset margin */
+            justify-content: center; /* CHANGED: Center align */
+            flex: 1; /* CHANGED: Take available space */
+            max-width: 300px; /* CHANGED: Limit width */
         }
 
         .lang-toggle, .theme-toggle {
@@ -219,6 +227,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: inherit;
+            font-size: 0.9rem; /* CHANGED: Smaller font */
         }
 
         .lang-toggle:hover, .theme-toggle:hover {
@@ -226,6 +235,7 @@
             transform: translateY(-2px);
         }
 
+        /* Rest of your original CSS remains exactly the same */
         /* Schemes Section */
         .schemes-section {
             padding: 120px 0 80px;
@@ -1137,16 +1147,6 @@
                 }
             });
         }
-
-        // Search schemes - REMOVED
-        // function searchSchemes() {
-        //     // This function has been removed
-        // }
-
-        // Filter by status - REMOVED
-        // function filterByStatus() {
-        //     // This function has been removed
-        // }
 
         // Toggle language
         function toggleLanguage() {

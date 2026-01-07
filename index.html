@@ -14,39 +14,40 @@
         }
 
         :root {
-            --primary-color: #1a5276;
-            --secondary-color: #2874a6;
-            --accent-color: #3498db;
-            --light-color: #ebf5fb;
-            --dark-color: #154360;
-            --text-color: #2c3e50;
-            --text-light: #7f8c8d;
+            --primary-color: #0a5bd3;
+            --secondary-color: #0848a6;
+            --accent-color: #ff6b35;
+            --light-color: #f8fafc;
+            --dark-color: #0a4bb3;
+            --text-color: #333;
+            --text-light: #666;
             --bg-color: #ffffff;
             --card-bg: #ffffff;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             --border-radius: 12px;
-            --gradient: linear-gradient(135deg, #1a5276 0%, #3498db 100%);
+            --gradient: linear-gradient(135deg, #0a5bd3 0%, #0a4bb3 100%);
         }
 
         [data-theme="dark"] {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
-            --accent-color: #1abc9c;
-            --light-color: #2c3e50;
-            --dark-color: #34495e;
-            --text-color: #ecf0f1;
-            --text-light: #bdc3c7;
-            --bg-color: #1a252f;
-            --card-bg: #2c3e50;
+            --primary-color: #0a5bd3;
+            --secondary-color: #0848a6;
+            --accent-color: #ff6b35;
+            --light-color: rgba(26, 26, 26, 0.85);
+            --dark-color: rgba(18, 18, 18, 0.9);
+            --text-color: #f5f5f5;
+            --text-light: #b0b0b0;
+            --bg-color: rgba(18, 18, 18, 0.85);
+            --card-bg: rgba(30, 30, 30, 0.9);
             --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --gradient: linear-gradient(135deg, #0a5bd3 0%, #0a4bb3 100%);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background: var(--bg-color);
+            background: var(--gradient), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover fixed;
+            background-blend-mode: overlay;
             min-height: 100vh;
             transition: all 0.3s ease;
         }
@@ -57,7 +58,7 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
+        /* Navigation - MATCHES schemes.html */
         .navbar {
             background: var(--primary-color);
             padding: 1rem 0;
@@ -70,22 +71,17 @@
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .nav-logo img {
-            height: 40px;
         }
 
         .nav-logo h2 {
@@ -127,7 +123,6 @@
             color: var(--accent-color);
         }
 
-        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -137,7 +132,6 @@
             border: none;
             color: white;
             font-family: inherit;
-            font-size: inherit;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -214,158 +208,350 @@
 
         /* Hero Section */
         .hero {
-            padding: 160px 0 100px;
-            background: var(--gradient);
+            padding: 160px 0 80px;
             color: white;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
         }
 
         .hero-content {
             text-align: center;
             position: relative;
             z-index: 1;
+            backdrop-filter: blur(10px);
+            background: rgba(248, 250, 252, 0.1);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 0 auto 4rem;
         }
 
         .hero-title {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #fff, #e3f2fd);
+            background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 400;
         }
 
         .hero-description {
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 3rem;
-            opacity: 0.8;
+            opacity: 0.9;
             line-height: 1.8;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: var(--accent-color);
             color: white;
-            padding: 15px 35px;
+            padding: 18px 40px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin-right: 1rem;
         }
 
         .cta-button:hover {
-            background: #2980b9;
+            background: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
         }
 
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: var(--light-color);
+        /* Popular Schemes Section - NEW */
+        .popular-schemes {
+            padding: 80px 0;
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(10px);
         }
 
-        .section-title {
+        .schemes-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
             color: var(--text-color);
             font-weight: 600;
+            position: relative;
         }
 
-        .features-grid {
+        .schemes-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .schemes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .feature-card {
+        .scheme-card {
             background: var(--card-bg);
-            padding: 2.5rem 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 4px solid var(--accent-color);
+            position: relative;
         }
 
-        .feature-card:hover {
+        .scheme-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
         }
 
-        .feature-icon {
+        .scheme-header {
+            background: var(--gradient);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .scheme-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-
-        .feature-card h3 {
             margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
+            opacity: 0.9;
         }
 
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.7;
+        .scheme-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .scheme-subtitle {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .scheme-body {
+            padding: 2rem;
+        }
+
+        .scheme-highlight {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .highlight-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .scheme-footer {
+            padding: 0 2rem 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .scheme-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Stats Section */
         .stats {
-            padding: 80px 0;
-            background: var(--gradient);
-            color: white;
+            padding: 100px 0;
+            background: var(--bg-color);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
             font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
+            display: block;
         }
 
-        .stat-item p {
-            opacity: 0.9;
-            font-size: 1.1rem;
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: rgba(248, 250, 252, 0.9);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 3rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(10, 91, 211, 0.3);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-color);
+            background: rgba(10, 75, 179, 0.95);
             color: white;
             padding: 4rem 0 2rem;
+            backdrop-filter: blur(10px);
         }
 
         .footer-content {
@@ -376,37 +562,44 @@
         }
 
         .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            background: linear-gradient(45deg, white, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .footer-about {
-            opacity: 0.8;
-            line-height: 1.7;
+            opacity: 0.95;
+            line-height: 1.8;
         }
 
         .footer-links h4, .footer-contact h4 {
             margin-bottom: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .footer-links a {
             display: block;
-            color: white;
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
-            margin-bottom: 0.8rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-links a:hover {
-            opacity: 1;
+            color: var(--accent-color);
+            transform: translateX(5px);
         }
 
         .footer-contact p {
-            margin-bottom: 0.8rem;
-            opacity: 0.8;
+            margin-bottom: 1rem;
+            opacity: 0.9;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -415,17 +608,17 @@
         .social-icons {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-icons a {
-            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
             color: white;
             text-decoration: none;
             transition: all 0.3s;
@@ -438,34 +631,54 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
+            .nav-container {
+                flex-direction: column;
                 gap: 1rem;
             }
-           
+            
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
             }
-           
+            
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
-           
+            
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .schemes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
-           
+            
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
-           
+            
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -473,7 +686,11 @@
                 transform: none;
                 box-shadow: none;
                 background: transparent;
-                max-height: 300px;
+                max-height: 400px;
+            }
+
+            .scheme-footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -484,63 +701,23 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
-                <h2>सरकारी सहायक</h2>
+                <h2 data-en="Sarkari Sahayak" data-hi="सरकारी सहायक">Sarkari Sahayak</h2>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link active" data-en="Home" data-hi="होम">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" data-en="Schemes" data-hi="योजनाएं">
+                    <button class="nav-link dropdown-toggle active" data-en="Schemes" data-hi="योजनाएं">
                         Schemes <i class="fas fa-chevron-down"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <!-- Updated to match all 60+ schemes from schemes.html -->
                         <li class="dropdown-item"><a href="schemes.html#employment-linked" data-en="Employment Linked Incentive" data-hi="रोजगार लिंक्ड प्रोत्साहन">Employment Linked Incentive</a></li>
                         <li class="dropdown-item"><a href="schemes.html#pm-internship" data-en="PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना">PM Internship Scheme</a></li>
                         <li class="dropdown-item"><a href="schemes.html#surya-ghar" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#aatmanirbharta-pulses" data-en="Aatmanirbharta in Pulses" data-hi="दलों में आत्मनिर्भरता">Aatmanirbharta in Pulses</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#bhasha-pustak" data-en="Bharatiya Bhasha Pustak" data-hi="भारतीय भाषा पुस्तक">Bharatiya Bhasha Pustak</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#online-workers" data-en="Social Security for Online Workers" data-hi="ऑनलाइन कर्मियों के लिए सामाजिक सुरक्षा">Social Security for Online Workers</a></li>
                         <li class="dropdown-item"><a href="schemes.html#vishwakarma" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">PM Vishwakarma Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#pm-kisan" data-en="PM-KISAN Enhanced" data-hi="पीएम-किसान एन्हांस्ड">PM-KISAN Enhanced</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#janjatiya-unnat" data-en="Janjatiya Unnat Gram" data-hi="जनजातीय उन्नत ग्राम">Janjatiya Unnat Gram</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#high-yield-seeds" data-en="High Yielding Seeds Mission" data-hi="उच्च उपज बीज मिशन">High Yielding Seeds Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#dhan-dhaanya" data-en="Dhan-Dhaanya Krishi" data-hi="धन-धान्य कृषि">Dhan-Dhaanya Krishi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#electric-mobility" data-en="Electric Mobility Promotion" data-hi="इलेक्ट्रिक मोबिलिटी प्रमोशन">Electric Mobility Promotion</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#subhadra" data-en="Subhadra Yojana" data-hi="सुभद्रा योजना">Subhadra Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#green-india" data-en="Green India Digital Mission" data-hi="ग्रीन इंडिया डिजिटल मिशन">Green India Digital Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#bharat-skill" data-en="Bharat Skill Connect" data-hi="भारत स्किल कनेक्ट">Bharat Skill Connect</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#ayushman-bharat" data-en="Ayushman Bharat Yojana" data-hi="आयुष्मान भारत योजना">Ayushman Bharat Yojana</a></li>
                         <li class="dropdown-item"><a href="schemes.html#pm-awas" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#ujjwala" data-en="Ujjwala Yojana" data-hi="उज्ज्वला योजना">Ujjwala Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#kisan-samman" data-en="Kisan Samman Nidhi" data-hi="किसान सम्मान निधि">Kisan Samman Nidhi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#mudra" data-en="Mudra Yojana" data-hi="मुद्रा योजना">Mudra Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#stand-up-india" data-en="Stand Up India" data-hi="स्टैंड अप इंडिया">Stand Up India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#jeevan-jyoti" data-en="Jeevan Jyoti Bima" data-hi="जीवन ज्योति बीमा">Jeevan Jyoti Bima</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#suraksha-bima" data-en="Suraksha Bima Yojana" data-hi="सुरक्षा बीमा योजना">Suraksha Bima Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#atal-pension" data-en="Atal Pension Yojana" data-hi="अटल पेंशन योजना">Atal Pension Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#digital-saksharta" data-en="Digital Saksharta Abhiyan" data-hi="डिजिटल साक्षरता अभियान">Digital Saksharta Abhiyan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#rural-livelihood" data-en="National Rural Livelihood" data-hi="राष्ट्रीय ग्रामीण आजीविका">National Rural Livelihood</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#fasal-bima" data-en="Fasal Bima Yojana" data-hi="फसल बीमा योजना">Fasal Bima Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#swachh-bharat" data-en="Swachh Bharat Mission" data-hi="स्वच्छ भारत मिशन">Swachh Bharat Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#digital-india" data-en="Digital India" data-hi="डिजिटल इंडिया">Digital India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#startup-india" data-en="Startup India" data-hi="स्टार्टअप इंडिया">Startup India</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#garib-kalyan" data-en="Garib Kalyan Yojana" data-hi="गरीब कल्याण योजना">Garib Kalyan Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#national-health" data-en="National Health Mission" data-hi="राष्ट्रीय स्वास्थ्य मिशन">National Health Mission</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#krishi-sinchai" data-en="Krishi Sinchai Yojana" data-hi="कृषि सिंचाई योजना">Krishi Sinchai Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#matru-vandana" data-en="Matru Vandana Yojana" data-hi="मातृ वंदना योजना">Matru Vandana Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#shram-yogi" data-en="Shram Yogi Maan-dhan" data-hi="श्रम योगी मान-धन">Shram Yogi Maan-dhan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#kisan-maan-dhan" data-en="Kisan Maan Dhan" data-hi="किसान मान धन">Kisan Maan Dhan</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#apprenticeship" data-en="Apprenticeship Scheme" data-hi="अप्रेंटिसशिप योजना">Apprenticeship Scheme</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#matsya-sampada" data-en="Matsya Sampada Yojana" data-hi="मत्स्य संपदा योजना">Matsya Sampada Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#one-nation-ration" data-en="One Nation One Ration" data-hi="वन नेशन वन राशन">One Nation One Ration</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#swanidhi" data-en="Swanidhi Yojana" data-hi="स्वनिधि योजना">Swanidhi Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#nrega" data-en="NREGA" data-hi="मनरेगा">NREGA</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#gram-sadak" data-en="Gram Sadak Yojana" data-hi="ग्राम सड़क योजना">Gram Sadak Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#jan-aushadhi" data-en="Jan Aushadhi Yojana" data-hi="जन औषधि योजना">Jan Aushadhi Yojana</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#sukanya" data-en="Sukanya Samriddhi" data-hi="सुकन्या समृद्धि">Sukanya Samriddhi</a></li>
-                        <li class="dropdown-item"><a href="schemes.html#vaya-vandana" data-en="Vaya Vandana Yojana" data-hi="वय वंदना योजना">Vaya Vandana Yojana</a></li>
+                        <li class="dropdown-item"><a href="schemes.html#ayushman-bharat" data-en="Ayushman Bharat Yojana" data-hi="आयुष्मान भारत योजना">Ayushman Bharat Yojana</a></li>
                     </ul>
                 </li>
             </ul>
@@ -559,21 +736,163 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title" data-en="Welcome to Sarkari Sahayak " data-hi="सरकारी सहायक में आपका स्वागत है">
+                <h1 class="hero-title" data-en="Welcome to Sarkari Sahayak" data-hi="सरकारी सहायक में आपका स्वागत है">
                     Welcome to Sarkari Sahayak
                 </h1>
-                <p class="hero-subtitle" data-en="Your Gateway to Government Schemes"
-                   data-hi="सरकारी योजनाओं का आपका गेटवे">
+                <p class="hero-subtitle" data-en="Your Gateway to Government Schemes" data-hi="सरकारी योजनाओं का आपका गेटवे">
                     Your Gateway to Government Schemes
                 </p>
-                <p class="hero-description" data-en="Discover, understand, and apply for various government schemes with ease. We simplify complex information and make it accessible to every citizen of India in their preferred language."
-                   data-hi="विभिन्न सरकारी योजनाओं को आसानी से खोजें, समझें और आवेदन करें। हम जटिल जानकारी को सरल बनाते हैं और इसे भारत के हर नागरिक के लिए उनकी पसंदीदा भाषा में सुलभ बनाते हैं।">
-                    Discover, understand, and apply for various government schemes with ease. We simplify complex information and make it accessible to every citizen of India in their preferred language.
+                <p class="hero-description" data-en="Discover, understand, and apply for 60+ government schemes with ease. Get personalized recommendations and step-by-step application guidance in Hindi & English."
+                   data-hi="60+ सरकारी योजनाओं को आसानी से खोजें, समझें और आवेदन करें। हिंदी और अंग्रेजी में व्यक्तिगत सिफारिशें और चरण-दर-चरण आवेदन मार्गदर्शन प्राप्त करें।">
+                    Discover, understand, and apply for 60+ government schemes with ease. Get personalized recommendations and step-by-step application guidance in Hindi & English.
                 </p>
                 <a href="schemes.html" class="cta-button" data-en="Explore All Schemes" data-hi="सभी योजनाएं देखें">
+                    <i class="fas fa-search"></i>
                     <span>Explore All Schemes</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
+                <a href="#popular-schemes" class="cta-button" style="background: var(--secondary-color); box-shadow: 0 8px 25px rgba(8, 72, 166, 0.3);" data-en="View Popular Schemes" data-hi="लोकप्रिय योजनाएं देखें">
+                    <i class="fas fa-star"></i>
+                    <span>View Popular Schemes</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Schemes Section -->
+    <section class="popular-schemes" id="popular-schemes">
+        <div class="container">
+            <h2 class="schemes-title" data-en="Popular Schemes" data-hi="लोकप्रिय योजनाएं">
+                Popular Schemes
+            </h2>
+            <div class="schemes-grid">
+                <!-- PM Awas Yojana -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="scheme-title" data-en="PM Awas Yojana" data-hi="पीएम आवास योजना">PM Awas Yojana</div>
+                        <div class="scheme-subtitle" data-en="Affordable Housing for All" data-hi="सभी के लिए किफायती आवास">Affordable Housing for All</div>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-highlight">
+                            <div class="highlight-title" data-en="Key Benefits" data-hi="मुख्य लाभ">Key Benefits</div>
+                            <p data-en="₹2.5 Lakh subsidy for home loans up to ₹35 Lakh" data-hi="₹35 लाख तक के होम लोन पर ₹2.5 लाख सब्सिडी">₹2.5 Lakh subsidy for home loans up to ₹35 Lakh</p>
+                        </div>
+                        <p data-en="Interest subsidy on home loans for urban and rural poor" data-hi="शहरी और ग्रामीण गरीबों के लिए होम लोन पर ब्याज सब्सिडी">Interest subsidy on home loans for urban and rural poor</p>
+                    </div>
+                    <div class="scheme-footer">
+                        <a href="#" class="scheme-btn btn-primary" data-en="Check Eligibility" data-hi="पात्रता जांचें">
+                            <i class="fas fa-check-circle"></i> Check Eligibility
+                        </a>
+                        <a href="#" class="scheme-btn btn-secondary" data-en="Learn More" data-hi="जानकारी">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ayushman Bharat -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="scheme-title" data-en="Ayushman Bharat" data-hi="आयुष्मान भारत">Ayushman Bharat</div>
+                        <div class="scheme-subtitle" data-en="Health for All" data-hi="सभी के लिए स्वास्थ्य">Health for All</div>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-highlight">
+                            <div class="highlight-title" data-en="Coverage" data-hi="कवरेज">Coverage</div>
+                            <p data-en="₹5 Lakh per family per year for secondary & tertiary care" data-hi="द्वितीयक और तृतीयक देखभाल के लिए प्रति परिवार प्रति वर्ष ₹5 लाख">₹5 Lakh per family per year for secondary & tertiary care</p>
+                        </div>
+                        <p data-en="Covers 10 crore poor families with free hospitalization" data-hi="10 करोड़ गरीब परिवारों को मुफ्त अस्पताल में भर्ती कवरेज">Covers 10 crore poor families with free hospitalization</p>
+                    </div>
+                    <div class="scheme-footer">
+                        <a href="#" class="scheme-btn btn-primary" data-en="Get Card" data-hi="कार्ड प्राप्त करें">
+                            <i class="fas fa-card"></i> Get Card
+                        </a>
+                        <a href="#" class="scheme-btn btn-secondary" data-en="Details" data-hi="विवरण">
+                            <i class="fas fa-list"></i> Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PM Vishwakarma -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div class="scheme-title" data-en="PM Vishwakarma Yojana" data-hi="पीएम विश्वकर्मा योजना">PM Vishwakarma Yojana</div>
+                        <div class="scheme-subtitle" data-en="Artisans Empowerment" data-hi="कारीगरों का सशक्तिकरण">Artisans Empowerment</div>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-highlight">
+                            <div class="highlight-title" data-en="Support" data-hi="सहायता">Support</div>
+                            <p data-en="₹1-3 Lakh collateral-free loans at 5% interest" data-hi="5% ब्याज पर ₹1-3 लाख बिना गारंटी ऋण">₹1-3 Lakh collateral-free loans at 5% interest</p>
+                        </div>
+                        <p data-en="Skill training, toolkit, credit & market linkage for artisans" data-hi="कारीगरों के लिए कौशल प्रशिक्षण, टूलकिट, ऋण और बाजार संपर्क">Skill training, toolkit, credit & market linkage for artisans</p>
+                    </div>
+                    <div class="scheme-footer">
+                        <a href="#" class="scheme-btn btn-primary" data-en="Apply Now" data-hi="अभी आवेदन करें">
+                            <i class="fas fa-file-alt"></i> Apply Now
+                        </a>
+                        <a href="#" class="scheme-btn btn-secondary" data-en="Eligibility" data-hi="पात्रता">
+                            <i class="fas fa-users"></i> Eligibility
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Surya Ghar -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="scheme-title" data-en="Surya Ghar Muft Bijli" data-hi="सूर्य घर मुफ्त बिजली">Surya Ghar Muft Bijli</div>
+                        <div class="scheme-subtitle" data-en="Free Solar Electricity" data-hi="मुफ्त सौर बिजली">Free Solar Electricity</div>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-highlight">
+                            <div class="highlight-title" data-en="Benefit" data-hi="लाभ">Benefit</div>
+                            <p data-en="300 units free electricity per month via rooftop solar" data-hi="रूफटॉप सोलर के माध्यम से 300 यूनिट मुफ्त बिजली प्रति माह">300 units free electricity per month via rooftop solar</p>
+                        </div>
+                        <p data-en="Central financial assistance for solar panel installation" data-hi="सौर पैनल स्थापना के लिए केंद्रीय वित्तीय सहायता">Central financial assistance for solar panel installation</p>
+                    </div>
+                    <div class="scheme-footer">
+                        <a href="#" class="scheme-btn btn-primary" data-en="Install Solar" data-hi="सोलर लगवाएं">
+                            <i class="fas fa-solar-panel"></i> Install Solar
+                        </a>
+                        <a href="#" class="scheme-btn btn-secondary" data-en="Apply" data-hi="आवेदन">
+                            <i class="fas fa-edit"></i> Apply
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-en="60+" data-hi="60+">60+</span>
+                    <span class="stat-label" data-en="Government Schemes" data-hi="सरकारी योजनाएं">Government Schemes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-en="1M+" data-hi="10 लाख+">1M+</span>
+                    <span class="stat-label" data-en="Happy Users" data-hi="खुश उपयोगकर्ता">Happy Users</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-en="100%" data-hi="100%">100%</span>
+                    <span class="stat-label" data-en="Free to Use" data-hi="निःशुल्क उपयोग">Free to Use</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-en="2X" data-hi="2X">2X</span>
+                    <span class="stat-label" data-en="Faster Applications" data-hi="तेज आवेदन">Faster Applications</span>
+                </div>
             </div>
         </div>
     </section>
@@ -586,137 +905,122 @@
             </h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3 data-en="Comprehensive Database" data-hi="व्यापक डेटाबेस">Comprehensive Database</h3>
-                    <p data-en="Access detailed information about all central and state government schemes with regular updates"
-                       data-hi="नियमित अपडेट के साथ केंद्र और राज्य सरकार की सभी योजनाओं की विस्तृत जानकारी तक पहुंच">
-                       Access detailed information about all central and state government schemes with regular updates
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 data-en="Complete Coverage" data-hi="पूर्ण कवरेज">Complete Coverage</h3>
+                    <p data-en="All 60+ central & state schemes with eligibility, documents & direct apply links" data-hi="पात्रता, दस्तावेज और सीधे आवेदन लिंक के साथ 60+ केंद्र और राज्य योजनाएं">
+                        All 60+ central & state schemes with eligibility, documents & direct apply links
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 data-en="Easy to Understand" data-hi="आसानी से समझें">Easy to Understand</h3>
-                    <p data-en="Simplified explanations in both Hindi and English with step-by-step application guidance"
-                       data-hi="चरण-दर-चरण आवेदन मार्गदर्शन के साथ हिंदी और अंग्रेजी दोनों में सरल स्पष्टीकरण">
-                       Simplified explanations in both Hindi and English with step-by-step application guidance
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 data-en="Bilingual Support" data-hi="द्विभाषी समर्थन">Bilingual Support</h3>
+                    <p data-en="Hindi & English explanations with one-click language toggle for all content" data-hi="सभी सामग्री के लिए एक-क्लिक भाषा टॉगल के साथ हिंदी और अंग्रेजी स्पष्टीकरण">
+                        Hindi & English explanations with one-click language toggle for all content
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 data-en="Quick Access" data-hi="त्वरित पहुंच">Quick Access</h3>
-                    <p data-en="Find relevant schemes quickly with our smart categorization and advanced search features"
-                       data-hi="हमारी स्मार्ट वर्गीकरण और उन्नत खोज सुविधाओं के साथ प्रासंगिक योजनाएं शीघ्रता से खोजें">
-                       Find relevant schemes quickly with our smart categorization and advanced search features
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3 data-en="Smart Filtering" data-hi="स्मार्ट फिल्टरिंग">Smart Filtering</h3>
+                    <p data-en="Filter by category, status (new/popular), search by benefits & eligibility criteria" data-hi="श्रेणी, स्थिति (नई/लोकप्रिय) द्वारा फिल्टर करें, लाभ और पात्रता मानदंड द्वारा खोजें">
+                        Filter by category, status (new/popular), search by benefits & eligibility criteria
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
- 
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">सरकारी सहायक</div>
-                    <p class="footer-about" data-en="Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives."
-                       data-hi="सरकारी योजनाओं और लाभों तक पहुंच में आपका विश्वसनीय साथी। हम नागरिकों और सरकारी पहलों के बीच की खाई को पाटते हैं।">
-                       Your trusted partner in accessing government schemes and benefits. We bridge the gap between citizens and government initiatives.
+                    <div class="footer-logo" data-en="Sarkari Sahayak" data-hi="सरकारी सहायक">Sarkari Sahayak</div>
+                    <p data-en="India's most trusted government schemes portal. Making welfare accessible to every citizen with simple, accurate information in their native language."
+                       data-hi="भारत का सबसे विश्वसनीय सरकारी योजनाएं पोर्टल। उनकी मातृभाषा में सरल, सटीक जानकारी के साथ हर नागरिक के लिए कल्याण को सुलभ बनाना।">
+                        India's most trusted government schemes portal. Making welfare accessible to every citizen with simple, accurate information in their native language.
                     </p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h4 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h4>
-                    <a href="index.html" data-en="Home" data-hi="होम">Home</a>
-                    <a href="schemes.html" data-en="All Schemes" data-hi="सभी योजनाएं">All Schemes</a>
-                    <a href="#" data-en="How to Apply" data-hi="आवेदन कैसे करें">How to Apply</a>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i><span data-en="Home" data-hi="होम">Home</span></a>
+                    <a href="schemes.html"><i class="fas fa-chevron-right"></i><span data-en="All Schemes" data-hi="सभी योजनाएं">All Schemes</span></a>
+                    <a href="#"><i class="fas fa-chevron-right"></i><span data-en="Eligibility Check" data-hi="पात्रता जांच">Eligibility Check</span></a>
+                    <a href="#"><i class="fas fa-chevron-right"></i><span data-en="Application Guide" data-hi="आवेदन गाइड">Application Guide</span></a>
                 </div>
                 <div class="footer-contact">
                     <h4 data-en="Contact Info" data-hi="संपर्क जानकारी">Contact Info</h4>
                     <p><i class="fas fa-envelope"></i> pr7353@vidyagyan.in</p>
-                    <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Varanasi, Uttar Pradesh</p>
+                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-en="© 2024 Sarkari Sahayak. All rights reserved." data-hi="© 2024 सरकारी सहायक। सर्वाधिकार सुरक्षित।">
-                    © 2024 Sarkari Sahayak. All rights reserved.
+                <p data-en="© 2026 Sarkari Sahayak. All rights reserved." data-hi="© 2026 सरकारी सहायक। सर्वाधिकार सुरक्षित।">
+                    © 2026 Sarkari Sahayak. All rights reserved.
+                </p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;" data-en="Official information platform. Visit respective government websites for applications."
+                   data-hi="आधिकारिक सूचना मंच। आवेदन के लिए संबंधित सरकारी वेबसाइट पर जाएं।">
+                    Official information platform. Visit respective government websites for applications.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme Toggle
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', newTheme);
-           
+            
             const themeIcon = document.querySelector('.theme-icon');
             themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
-           
-            // Save theme preference
             localStorage.setItem('theme', newTheme);
         }
 
-        // Language Toggle
         function toggleLanguage() {
             const currentLang = document.documentElement.getAttribute('data-lang');
             const newLang = currentLang === 'en' ? 'hi' : 'en';
             document.documentElement.setAttribute('data-lang', newLang);
-           
+            
             document.querySelectorAll('[data-en][data-hi]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${newLang}`);
             });
-           
+            
             const langText = document.querySelector('.lang-text');
-            langText.textContent = langText.getAttribute(`data-${newLang}`);
-           
-            // Save language preference
+            langText.textContent = newLang === 'en' ? 'हिंदी' : 'English';
             localStorage.setItem('language', newLang);
         }
 
-        // Load saved preferences
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             const savedLang = localStorage.getItem('language') || 'en';
-           
+            
             document.documentElement.setAttribute('data-theme', savedTheme);
             document.documentElement.setAttribute('data-lang', savedLang);
-           
+            
             const themeIcon = document.querySelector('.theme-icon');
             themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-           
+            
             document.querySelectorAll('[data-en][data-hi]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${savedLang}`);
             });
-           
+            
             const langText = document.querySelector('.lang-text');
-            langText.textContent = langText.getAttribute(`data-${savedLang}`);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+            langText.textContent = savedLang === 'en' ? 'हिंदी' : 'English';
         });
     </script>
 </body>
 </html>
-
-

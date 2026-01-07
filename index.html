@@ -1,3 +1,9 @@
+edited home page
+
+
+PIYUSH
+​
+PRINCE​
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,6 +105,32 @@
         margin-top: 5px;
     }
    
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
     .header-controls {
         display: flex;
         align-items: center;
@@ -830,6 +862,12 @@
     </div>
     <div class="tagline" id="tagline">Your Gateway to Government Schemes</div>
     <div class="header-controls">
+ <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="schme.html" class="nav-link" data-en="Home" data-hi="योजनाए">Scheme</a>
+                </li>
+             
+            </ul>
         <button onclick="toggleLanguage()">
             <i class="fas fa-language"></i> EN/HIN
         </button>

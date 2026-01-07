@@ -204,31 +204,6 @@
             color: var(--accent-color);
         }
 
-        /* SEARCH + FILTER SECTION */
-        .search-filter {
-            display: flex;
-            gap: 10px;
-            margin-left: auto;
-        }
-
-        .search-filter input, .search-filter select {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-family: inherit;
-        }
-
-        .search-filter input::placeholder {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .search-filter input:focus, .search-filter select:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
         .nav-controls {
             display: flex;
             gap: 1rem;
@@ -640,14 +615,6 @@
                 gap: 1rem;
             }
             
-            .search-filter {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            
             .nav-controls {
                 order: 2;
                 margin-left: auto;
@@ -708,18 +675,6 @@
                 color: white;
                 font-size: 0.9rem;
                 padding-left: 15px;
-            }
-           
-            .search-filter {
-                order: 3;
-                width: 100%;
-                margin: 10px 0;
-                justify-content: center;
-            }
-           
-            .search-filter input, .search-filter select {
-                width: 100%;
-                max-width: 300px;
             }
            
             .nav-controls {
@@ -785,16 +740,6 @@
             .category-filter {
                 width: 100%;
                 justify-content: center;
-            }
-            
-            .search-filter {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .search-filter input, .search-filter select {
-                width: 100%;
-                max-width: none;
             }
             
             .nav-controls {
@@ -871,17 +816,6 @@
                     </ul>
                 </li>
             </ul>
-            
-            <!-- SEARCH + FILTER SECTION -->
-            <div class="search-filter">
-                <input type="text" id="scheme-search" placeholder="स्कीम खोजें..." onkeyup="searchSchemes()">
-                <select id="scheme-filter" onchange="filterByStatus()">
-                    <option value="all">सभी</option>
-                    <option value="new">🟢 NEW</option>
-                    <option value="popular">🟠 POPULAR</option>
-                    <option value="old">📜 OLD</option>
-                </select>
-            </div>
 
             <div class="nav-controls">
                 <button class="lang-toggle" onclick="toggleLanguage()">
@@ -1204,43 +1138,15 @@
             });
         }
 
-        // Search schemes
-        function searchSchemes() {
-            const searchTerm = document.getElementById('scheme-search').value.toLowerCase();
-            const schemeCards = document.querySelectorAll('.scheme-card');
-           
-            schemeCards.forEach(card => {
-                const header = card.querySelector('.scheme-header h3').textContent.toLowerCase();
-                const categoryTitle = card.parentElement.querySelector('.category-title').textContent.toLowerCase();
-                const details = card.querySelector('.scheme-details p').textContent.toLowerCase();
-               
-                if (header.includes(searchTerm) || categoryTitle.includes(searchTerm) || details.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    // Make sure parent category is visible
-                    let categorySection = card.closest('.scheme-category-section');
-                    if (categorySection) {
-                        categorySection.classList.remove('hidden');
-                    }
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+        // Search schemes - REMOVED
+        // function searchSchemes() {
+        //     // This function has been removed
+        // }
 
-        // Filter by status (new/popular/old)
-        function filterByStatus() {
-            const status = document.getElementById('scheme-filter').value;
-            const badges = document.querySelectorAll('.badge');
-           
-            badges.forEach(badge => {
-                const schemeCard = badge.closest('.scheme-category').querySelector('.scheme-card');
-                if (status === 'all' || badge.classList.contains(status)) {
-                    schemeCard.style.display = 'block';
-                } else {
-                    schemeCard.style.display = 'none';
-                }
-            });
-        }
+        // Filter by status - REMOVED
+        // function filterByStatus() {
+        //     // This function has been removed
+        // }
 
         // Toggle language
         function toggleLanguage() {

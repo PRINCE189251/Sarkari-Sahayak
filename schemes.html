@@ -73,7 +73,7 @@
             padding: 0 20px;
         }
 
-        /* Navigation - MODIFIED CSS ONLY */
+        /* Navigation - Mobile Optimized CSS Only */
         .navbar {
             background: var(--primary-color);
             padding: 1rem 0;
@@ -111,7 +111,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 1rem; /* CHANGED: Reduced from 2rem to 1rem */
+            gap: 2rem;
             align-items: center;
         }
 
@@ -121,8 +121,6 @@
             transition: color 0.3s;
             font-weight: 500;
             position: relative;
-            font-size: 0.95rem; /* CHANGED: Slightly smaller font */
-            padding: 8px 12px; /* CHANGED: Reduced padding */
         }
 
         .nav-link.active {
@@ -143,7 +141,7 @@
             color: var(--accent-color);
         }
 
-        /* Dropdown Styles - MODIFIED */
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -153,13 +151,12 @@
             border: none;
             color: white;
             font-family: inherit;
+            font-size: inherit;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 8px 12px; /* CHANGED: Reduced padding */
-            font-size: 0.95rem; /* CHANGED: Smaller font */
-            font-weight: 500;
+            padding: 0;
         }
 
         .dropdown-menu {
@@ -167,7 +164,7 @@
             top: 100%;
             left: 0;
             background: var(--card-bg);
-            min-width: 250px; /* CHANGED: Reduced from 300px to 250px */
+            min-width: 300px;
             max-height: 500px;
             overflow-y: auto;
             box-shadow: var(--shadow);
@@ -187,7 +184,7 @@
         }
 
         .dropdown-item {
-            padding: 8px 12px; /* CHANGED: Reduced padding */
+            padding: 10px 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -200,22 +197,17 @@
             text-decoration: none;
             display: block;
             transition: color 0.3s;
-            font-size: 0.85rem; /* CHANGED: Smaller font */
+            font-size: 0.9rem;
         }
 
         .dropdown-item a:hover {
             color: var(--accent-color);
         }
 
-        /* Language and Theme Controls - MODIFIED */
         .nav-controls {
             display: flex;
             gap: 1rem;
             align-items: center;
-            margin-left: 0; /* CHANGED: Reset margin */
-            justify-content: center; /* CHANGED: Center align */
-            flex: 1; /* CHANGED: Take available space */
-            max-width: 300px; /* CHANGED: Limit width */
         }
 
         .lang-toggle, .theme-toggle {
@@ -227,12 +219,147 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: inherit;
-            font-size: 0.9rem; /* CHANGED: Smaller font */
         }
 
         .lang-toggle:hover, .theme-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
+        }
+
+        /* Mobile Optimization - Added CSS */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 0;
+                height: 60px; /* Mobile में छोटा height */
+            }
+            
+            .nav-container {
+                padding: 0 10px;
+                gap: 5px;
+            }
+            
+            .nav-logo h2 {
+                font-size: 1.1rem;
+            }
+            
+            .nav-logo i {
+                font-size: 1.3rem;
+            }
+            
+            .nav-menu {
+                gap: 10px;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 6px 8px;
+            }
+            
+            .dropdown-toggle {
+                font-size: 0.85rem;
+                padding: 6px 8px;
+            }
+            
+            .nav-controls {
+                gap: 8px;
+            }
+            
+            .lang-toggle, .theme-toggle {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                height: 50px; /* और छोटा */
+            }
+            
+            .nav-container {
+                padding: 0 8px;
+                gap: 3px;
+            }
+            
+            .nav-logo h2 {
+                font-size: 1rem;
+                display: none; /* Mobile में text hide */
+            }
+            
+            .nav-logo i {
+                font-size: 1.2rem;
+            }
+            
+            .nav-menu {
+                gap: 5px;
+            }
+            
+            .nav-link {
+                font-size: 0.75rem;
+                padding: 4px 6px;
+            }
+            
+            .dropdown-toggle {
+                font-size: 0.75rem;
+                padding: 4px 6px;
+            }
+            
+            .nav-controls {
+                gap: 5px;
+            }
+            
+            .lang-toggle, .theme-toggle {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+            
+            /* Mobile में text hide, icon दिखे */
+            .lang-toggle span:not(.lang-text),
+            .theme-toggle span:not(.theme-icon) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar {
+                height: 45px; /* Extreme mobile के लिए */
+            }
+            
+            .nav-container {
+                padding: 0 5px;
+            }
+            
+            .nav-logo i {
+                font-size: 1rem;
+            }
+            
+            .nav-menu {
+                gap: 3px;
+            }
+            
+            .nav-link {
+                font-size: 0.7rem;
+                padding: 3px 5px;
+            }
+            
+            .dropdown-toggle {
+                font-size: 0.7rem;
+                padding: 3px 5px;
+            }
+            
+            .nav-controls {
+                gap: 3px;
+            }
+            
+            .lang-toggle, .theme-toggle {
+                padding: 3px 6px;
+                min-width: 35px;
+                justify-content: center;
+            }
+            
+            .dropdown-menu {
+                min-width: 200px;
+                max-height: 300px;
+            }
         }
 
         /* Rest of your original CSS remains exactly the same */
@@ -618,7 +745,7 @@
             opacity: 0.7;
         }
 
-        /* Responsive */
+        /* Responsive - Your original code */
         @media (max-width: 1024px) {
             .nav-container {
                 flex-wrap: wrap;
@@ -782,7 +909,7 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar - ALL ORIGINAL DATA -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -838,7 +965,7 @@
         </div>
     </nav>
 
-    <!-- Schemes Section -->
+    <!-- Schemes Section - ALL ORIGINAL DATA -->
     <section class="schemes-section">
         <div class="container">
             <h1 class="page-title" data-en="Government Schemes" data-hi="सरकारी योजनाएं">
@@ -849,7 +976,7 @@
                 Explore 45+ government schemes and their benefits. Click on any scheme to view detailed information.
             </p>
 
-            <!-- Category Filters -->
+            <!-- Category Filters - ALL ORIGINAL DATA -->
             <div class="category-filters">
                 <button class="category-filter active" onclick="filterByCategory('all')">
                     <i class="fas fa-layer-group"></i>
@@ -905,7 +1032,7 @@
 
             <div class="schemes-grid">
                
-                <!-- EMPLOYMENT & SKILLS CATEGORY -->
+                <!-- EMPLOYMENT & SKILLS CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="employment">
                     <div class="category-header">
                         <div class="category-icon">
@@ -919,17 +1046,9 @@
                     </div>
                     
                     <!-- COPY YOUR SCHEMES FOR EMPLOYMENT CATEGORY HERE -->
-                    <!-- Example: -->
-                    <!-- <div class="scheme-category">
-                        <span class="badge new">🟢 NEW</span>
-                        <h2 class="category-title" id="employment-linked">Employment Linked Incentive</h2>
-                        <div class="scheme-card" onclick="toggleSchemeDetails(this)">
-                            ... scheme content ...
-                        </div>
-                    </div> -->
                 </div>
 
-                <!-- AGRICULTURE CATEGORY -->
+                <!-- AGRICULTURE CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="agriculture">
                     <div class="category-header">
                         <div class="category-icon">
@@ -945,7 +1064,7 @@
                     <!-- COPY YOUR SCHEMES FOR AGRICULTURE CATEGORY HERE -->
                 </div>
 
-                <!-- HEALTH & INSURANCE CATEGORY -->
+                <!-- HEALTH & INSURANCE CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="health">
                     <div class="category-header">
                         <div class="category-icon">
@@ -961,7 +1080,7 @@
                     <!-- COPY YOUR SCHEMES FOR HEALTH CATEGORY HERE -->
                 </div>
 
-                <!-- HOUSING CATEGORY -->
+                <!-- HOUSING CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="housing">
                     <div class="category-header">
                         <div class="category-icon">
@@ -977,7 +1096,7 @@
                     <!-- COPY YOUR SCHEMES FOR HOUSING CATEGORY HERE -->
                 </div>
 
-                <!-- WOMEN & CHILD CATEGORY -->
+                <!-- WOMEN & CHILD CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="women">
                     <div class="category-header">
                         <div class="category-icon">
@@ -993,7 +1112,7 @@
                     <!-- COPY YOUR SCHEMES FOR WOMEN & CHILD CATEGORY HERE -->
                 </div>
 
-                <!-- SOCIAL SECURITY CATEGORY -->
+                <!-- SOCIAL SECURITY CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="pension">
                     <div class="category-header">
                         <div class="category-icon">
@@ -1009,7 +1128,7 @@
                     <!-- COPY YOUR SCHEMES FOR SOCIAL SECURITY CATEGORY HERE -->
                 </div>
 
-                <!-- EDUCATION CATEGORY -->
+                <!-- EDUCATION CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="education">
                     <div class="category-header">
                         <div class="category-icon">
@@ -1025,7 +1144,7 @@
                     <!-- COPY YOUR SCHEMES FOR EDUCATION CATEGORY HERE -->
                 </div>
 
-                <!-- BUSINESS CATEGORY -->
+                <!-- BUSINESS CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="business">
                     <div class="category-header">
                         <div class="category-icon">
@@ -1041,7 +1160,7 @@
                     <!-- COPY YOUR SCHEMES FOR BUSINESS CATEGORY HERE -->
                 </div>
 
-                <!-- ENVIRONMENT CATEGORY -->
+                <!-- ENVIRONMENT CATEGORY - ALL ORIGINAL DATA -->
                 <div class="scheme-category-section" data-category="environment">
                     <div class="category-header">
                         <div class="category-icon">
@@ -1060,7 +1179,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - ALL ORIGINAL DATA -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1103,6 +1222,7 @@
         </div>
     </footer>
 
+    <!-- ALL ORIGINAL JAVASCRIPT -->
     <script>
         // Toggle scheme details
         function toggleSchemeDetails(element) {
